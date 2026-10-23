@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="theme-color" content="#07080b"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-capable" content="yes">
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<title>AVANTGARDE MOTORS</title>
+<style>
+:root{--bg:#07080b;--p:#10131a;--ln:#262c38;--gold:#f5c46b;--cy:#5ee6ff;--rd:#ff4d5e;--gr:#4be39a;--tx:#f3f5f8;--mu:#8e98a8;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:inherit}html,body{margin:0;min-height:100%;width:100%;}
+body{background:var(--bg);color:var(--tx);font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;min-height:100vh;min-height:100dvh;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(ellipse 60% 40% at 15% 0,#f5c46b22,transparent),radial-gradient(ellipse 50% 40% at 95% 5%,#5ee6ff1c,transparent),repeating-linear-gradient(90deg,#ffffff05 0 1px,transparent 1px 64px)}
+button{font:inherit;font-weight:700;cursor:pointer;color:inherit}
+header{padding:20px 16px 14px;border-bottom:1px solid var(--ln);background:linear-gradient(120deg,#1a1d24,#0a0b0e)}
+.w{max-width:none;width:100%;margin:auto}
+.brand{font-size:10px;font-weight:800;letter-spacing:.3em;color:var(--gold)}
+h1{margin:6px 0 2px;font-size:clamp(24px,6vw,36px);letter-spacing:-.04em}
+h2{font-size:17px;margin:0 0 10px}
+.money{font-size:clamp(26px,7vw,34px);font-weight:900;font-variant-numeric:tabular-nums;color:var(--gold);text-shadow:0 0 24px #f5c46b55}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.mu,small{color:var(--mu)}.bad{color:var(--rd)}
+.bar{height:5px;background:#252a35;border-radius:9px;overflow:hidden;margin:7px 0}.bar i{display:block;height:100%;border-radius:9px;transition:width .5s}
+main{width:100%;max-width:none;margin:0;padding:16px clamp(12px,2.2vw,34px) calc(100px + env(safe-area-inset-bottom,0px))}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:16px}
+.stat{background:var(--p);border:1px solid var(--ln);border-radius:10px;padding:11px 4px;text-align:center}.stat b{display:block;font-size:16px}.stat span{font-size:9px;color:var(--mu);letter-spacing:.1em}
+.grid{display:grid;gap:12px}@media(min-width:600px){.grid{grid-template-columns:1fr 1fr}}
+.card{position:relative;overflow:hidden;background:linear-gradient(150deg,#181c25,#0f1218);border:1px solid var(--ln);border-radius:14px;padding:14px;margin-bottom:12px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.grid .card{margin:0}
+.card[style*="--rc"]:hover{transform:translateY(-3px);border-color:var(--rc);box-shadow:0 12px 36px #0009,0 0 22px color-mix(in srgb,var(--rc) 35%,transparent)}
+.card[style*="--rc"]:after{content:"";position:absolute;top:0;left:-70%;width:40%;height:100%;background:linear-gradient(100deg,transparent,#ffffff14,transparent);transform:skewX(-20deg);pointer-events:none}
+.card[style*="--rc"]:hover:after{animation:shine .9s}
+@keyframes shine{to{left:130%}}
+.stage{position:relative;height:190px;margin:-14px -14px 12px;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 90%,#3a4150 0,#1a1e27 50%,#0f1218 100%);border-bottom:1px solid var(--ln)}
+.stage{overflow:hidden}.stage svg{width:94%;height:100%;animation:fl 4s ease-in-out infinite,pop .7s backwards;filter:drop-shadow(0 8px 10px #000a)}.stage:before{content:"";position:absolute;inset:0;background:conic-gradient(from 200deg at 50% 125%,transparent,#ffffff14 7%,transparent 15%);animation:sw 6s ease-in-out infinite alternate}.stage:after{content:"";position:absolute;left:6%;right:6%;bottom:30px;height:1px;background:linear-gradient(90deg,transparent,var(--rc,#5ee6ff),transparent);opacity:.8;box-shadow:0 0 14px var(--rc,#5ee6ff)}@keyframes pop{from{opacity:0;transform:translateX(-50px) scale(.95)}}@keyframes sw{to{transform:translateX(16%)}}body:after{content:"";position:fixed;inset:-20%;z-index:-1;pointer-events:none;background:radial-gradient(circle at 30% 70%,#5ee6ff12,transparent 30%),radial-gradient(circle at 70% 30%,#f5c46b14,transparent 30%);animation:orb 18s ease-in-out infinite alternate}@keyframes orb{to{transform:translate(4%,-3%) scale(1.1)}}.card{animation:ci .5s backwards}@keyframes ci{from{opacity:0;transform:translateY(16px)}}.grid>.card:nth-child(2n){animation-delay:.07s}.grid>.card:nth-child(3n){animation-delay:.14s}.trk{background:repeating-linear-gradient(90deg,#ffffff10 0 24px,transparent 24px 64px)}.trk.go{animation:rd .5s linear infinite}@keyframes rd{to{background-position:-64px 0}}.trk .spin{animation-play-state:running;animation-duration:.4s}
+@keyframes fl{50%{transform:translateY(-3px)}}
+.rar{position:absolute;top:9px;left:10px;font-size:9px;letter-spacing:.14em;font-weight:800;color:var(--rc)}
+.tag{font-size:9px;letter-spacing:.1em;color:var(--mu);border:1px solid #3a4150;border-radius:4px;padding:3px 6px}
+.price{font-size:19px;font-weight:900;font-variant-numeric:tabular-nums}
+.deal{font-size:9px;font-weight:800;color:#07080b;background:var(--gr);border-radius:4px;padding:3px 6px}
+.btn{display:block;width:100%;margin-top:9px;padding:12px;border-radius:9px;border:1px solid #ffd98e;background:linear-gradient(135deg,#ffd98e,#e8a93d);color:#1a1205;box-shadow:0 4px 16px #f5c46b30;transition:transform .1s,filter .2s}
+.btn{position:relative;overflow:hidden;letter-spacing:.035em;text-shadow:0 1px #fff5;box-shadow:0 5px 0 #9a6b24,0 8px 22px #f5c46b24;transition:transform .16s,filter .2s,box-shadow .2s}.btn:before{content:"";position:absolute;inset:0;background:linear-gradient(110deg,transparent 15%,#ffffff48 48%,transparent 70%);transform:translateX(-120%);transition:transform .5s;pointer-events:none}.btn:hover{filter:brightness(1.14);transform:translateY(-2px);box-shadow:0 7px 0 #9a6b24,0 12px 28px #f5c46b38}.btn:hover:before{transform:translateX(120%)}.btn:active{transform:translateY(3px) scale(.99);box-shadow:0 2px 0 #9a6b24}.btn.s{box-shadow:inset 0 1px #ffffff0a,0 4px 12px #0005;text-shadow:none}.btn.s:hover{box-shadow:inset 0 1px #ffffff12,0 8px 20px #5ee6ff16;border-color:var(--cy)}
+.btn.s{background:#1a1f29;border-color:#363e4d;color:var(--tx);box-shadow:none}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+nav{position:fixed;left:0;right:0;bottom:0;z-index:50;display:flex;justify-content:space-around;background:#0b0d11ee;border-top:1px solid var(--ln);padding:8px 2px calc(8px + env(safe-area-inset-bottom,0px));backdrop-filter:blur(12px)}
+nav button{background:none;border:0;color:var(--mu);font-size:10px;padding:4px;min-width:46px}nav button b{display:block;font-size:17px}nav button.on{color:var(--gold)}
+select{width:100%;padding:10px;border-radius:8px;background:#0b0e13;color:var(--tx);border:1px solid var(--ln);font:inherit}
+.hl{animation:pulse 2.5s infinite}@keyframes pulse{50%{opacity:.55}}
+.spin{animation:sp 1s linear infinite;animation-play-state:paused}.card:hover .spin,.modal .spin{animation-play-state:running}
+@keyframes sp{to{transform:rotate(360deg)}}
+.smk circle{animation:smoke 1.8s infinite;fill:#9aa2ad}.smk circle:nth-child(2){animation-delay:.6s}.smk circle:nth-child(3){animation-delay:1.2s}
+@keyframes smoke{0%{opacity:.7;transform:translate(0,0) scale(.5)}100%{opacity:0;transform:translate(-8px,-34px) scale(2)}}
+.toasts{position:fixed;top:calc(12px + env(safe-area-inset-top,0px));left:0;right:0;z-index:60;display:flex;flex-direction:column;align-items:center;gap:6px;pointer-events:none}
+.toast{background:#1b202bf2;border:1px solid #3a4356;border-radius:10px;padding:10px 16px;font-weight:700;box-shadow:0 8px 30px #000a;animation:tin .3s,tout .4s 2.3s forwards}
+@keyframes tin{from{transform:translateY(-14px);opacity:0}}@keyframes tout{to{opacity:0;transform:translateY(-10px)}}
+.cf{position:fixed;z-index:70;width:8px;height:12px;pointer-events:none;animation:cf 1.3s ease-out forwards}
+@keyframes cf{to{transform:translate(var(--dx),var(--dy)) rotate(var(--rt));opacity:0}}
+.modal{position:fixed;inset:0;z-index:40;background:#05060af2;backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:16px}
+.mp{width:min(720px,100%);background:linear-gradient(150deg,#1a1e27,#0c0e12);border:1px solid #394150;border-radius:16px;padding:20px 14px;text-align:center}
+.win{position:relative;overflow:hidden;border:1px solid var(--ln);border-radius:10px;margin:14px 0;background:#0b0d11}
+.win:before{content:"";position:absolute;z-index:2;left:50%;top:0;bottom:0;width:2px;background:var(--gold);box-shadow:0 0 16px var(--gold)}
+.reel{display:flex;width:max-content}
+.ri{width:124px;margin-right:6px;padding:6px;text-align:center;border-bottom:3px solid var(--rc);font-size:10px}.ri svg{width:100%;height:60px}
+.lights{display:flex;gap:10px;justify-content:center;margin:12px 0}.lights i{width:24px;height:24px;border-radius:50%;background:#1d222c}.lights i.r{background:var(--rd);box-shadow:0 0 16px var(--rd)}.lights i.g{background:var(--gr);box-shadow:0 0 18px var(--gr)}
+.trk{position:relative;height:56px;border-bottom:2px dashed #3a4150}.trk .c{position:absolute;left:0;bottom:0;width:90px;transition:left 1.4s cubic-bezier(.6,0,.3,1)}.trk.go .c{left:calc(100% - 90px)}
+.tb{position:relative;height:30px;background:#0b0e13;border:1px solid var(--ln);border-radius:8px;overflow:hidden;margin:12px 0}
+#zone{position:absolute;top:0;bottom:0;background:#4be39a55;border:1px solid var(--gr)}#needle{position:absolute;top:0;bottom:0;width:3px;background:#fff;box-shadow:0 0 10px #fff}
+details{margin-top:8px}summary{cursor:pointer;color:var(--mu);font-size:12px}.od{display:flex;justify-content:space-between;font-size:11px;padding:4px 0;border-bottom:1px solid #1d222c}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* Telegram Mini App safe areas + compact touch-first controls */
+body{padding-bottom:env(safe-area-inset-bottom,0px);touch-action:pan-y;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:contain}
+button,select,input{touch-action:manipulation}button{min-height:42px}nav{padding-bottom:calc(6px + env(safe-area-inset-bottom,0px))}
+.tg-account{display:flex;align-items:center;gap:8px;margin:4px 0 12px;padding:9px 12px;border:1px solid #303847;border-radius:12px;background:#10141be8;font-size:11px;color:var(--mu)}.tg-account b{color:var(--cy)}
+.tune-preview{position:relative;overflow:hidden;border:1px solid #303847;border-radius:18px;background:radial-gradient(ellipse at 50% 85%,#26303c,#0b0e13 72%);padding:10px 4px 4px}.tune-preview .stage{height:170px;margin:0;border:0;background:transparent}.tune-preview .stage svg{filter:drop-shadow(0 10px 7px #000b)}.tune-meta{display:flex;justify-content:space-between;gap:8px;padding:8px 10px 10px;font-size:10px;color:var(--mu)}.tune-meta b{color:var(--tx)}.part-card{border:1px solid #2c3442;border-radius:15px;padding:12px;margin-top:9px;background:linear-gradient(145deg,#171c25,#0e1117)}.part-card .row b{font-size:13px}.part-icon{width:36px;height:36px;display:grid;place-items:center;flex:none;border:1px solid #3b4657;border-radius:11px;background:#202733;color:var(--cy);font-size:18px}.tune-part-head{display:flex;align-items:center;gap:10px}.profile-car{display:grid;grid-template-columns:1fr;gap:0}.profile-car .stage{height:115px;margin:-12px -12px 10px}.stage svg.income-motion{animation:idleCar 3.6s ease-in-out infinite,softHeadlights 4.2s ease-in-out infinite;transform-origin:50% 85%}@keyframes idleCar{0%,100%{transform:translateY(0) rotate(0)}35%{transform:translateY(-1.7px) rotate(-.18deg)}70%{transform:translateY(.7px) rotate(.12deg)}}@keyframes softHeadlights{0%,100%{filter:drop-shadow(0 9px 7px #0009)}50%{filter:drop-shadow(0 9px 8px #5ee6ff20)}}.income-number{color:var(--gr);font-weight:800;font-size:12px}.tg-status{font-size:10px;color:var(--gr)}
+@media(max-width:420px){header .top{gap:7px}.sound-toggle,.music-toggle{width:34px;height:36px}.top h1{font-size:22px}.pill{padding:7px 9px;font-size:12px}.stats{gap:5px}.stat{padding:9px 2px}}
+
+
+header{padding:12px clamp(12px,2.2vw,34px) 10px;background:linear-gradient(180deg,#10131ae8,transparent);border:0}
+.top{display:flex;align-items:center;gap:12px;width:100%}.top h1{flex:1;margin:0;font-size:clamp(26px,7vw,34px)}
+.av{position:relative;width:48px;height:48px;border-radius:50%;background:conic-gradient(var(--gold) var(--p,0%),#2a2f3a 0);display:grid;place-items:center;flex:none}.av:before{content:"";position:absolute;inset:3px;border-radius:50%;background:#14171d}.av i{position:relative;font-style:normal;font-size:21px}.av b{position:absolute;right:-6px;bottom:-4px;background:#b25cff;border-radius:10px;padding:1px 6px;font-size:11px}
+.pill{background:#171b23;border:1px solid #2b303b;border-radius:22px;padding:9px 15px;font-weight:800;color:var(--gold);font-variant-numeric:tabular-nums;box-shadow:0 0 22px #f5c46b22}
+.card{border-radius:22px;background:linear-gradient(160deg,#1a1e27,#11141b)}.stat{border-radius:16px}
+.stage{background:radial-gradient(ellipse at 50% 85%,#2c3340 0,#171b23 55%,#10131a 100%);height:172px}
+.gr{position:absolute;top:10px;left:10px;z-index:2;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font-weight:900;color:#0b0c10;font-size:14px;box-shadow:0 0 14px #0006}
+.slot{display:grid;place-items:center;min-height:150px;border:2px dashed #2b303b;border-radius:22px;color:var(--mu);font-weight:700;cursor:pointer;transition:.2s}.slot:hover{border-color:var(--gold);color:var(--gold)}
+nav{left:12px;right:12px;bottom:calc(10px + env(safe-area-inset-bottom,0px));border:1px solid #2b303b;border-radius:30px;background:#13161cee;padding:6px;box-shadow:0 10px 40px #000c}
+nav button{border-radius:22px;padding:7px 4px;min-width:0;flex:1;transition:.2s}nav button b{font-size:16px}nav button.on{background:#262b36;color:var(--gold)}
+.btn{border-radius:14px}
+.grid.cars{grid-template-columns:1fr 1fr;gap:10px}.grid.cars .card{padding:10px;border-radius:20px}.grid.cars .stage{height:100px;margin:-10px -10px 10px}.grid.cars .price{font-size:15px}.grid.cars .tag{display:none}.grid.cars .btn{padding:10px 4px;font-size:11px;margin-top:7px}.grid.cars .mu{font-size:11px}.grid.cars .card b{font-size:13px}.grid.cars .gr{top:7px;left:7px;width:24px;height:24px;font-size:12px}.grid.cars .slot{min-height:100px;font-size:12px}
+@media(min-width:700px){.grid.cars{grid-template-columns:repeat(3,1fr)}.grid.cars .stage{height:130px}}
+.grid.cars .row small{display:none}.grid.cars .price{white-space:nowrap}
+label{display:block;color:var(--mu);font-size:11px;margin:10px 0 5px}.grid button{min-width:0}.stage svg{max-width:100%}nav button{font-size:9px}@media(max-width:390px){nav button{font-size:8px;padding-inline:1px}}\n
+.sound-toggle,.music-toggle{width:38px;height:38px;flex:none;border-radius:12px;border:1px solid #3b4555;background:linear-gradient(145deg,#202733,#10131a);font-size:17px;box-shadow:0 0 18px #5ee6ff12;transition:transform .18s,box-shadow .18s,border-color .18s}.sound-toggle:hover,.music-toggle:hover{transform:translateY(-2px);border-color:var(--cy);box-shadow:0 0 22px #5ee6ff40}.btn{position:relative;overflow:hidden;isolation:isolate;background:linear-gradient(115deg,#ffe7a8,#f5c46b 42%,#d9952c);box-shadow:0 5px 0 #885b1d,0 9px 24px #f5c46b24;transition:transform .16s,filter .18s,box-shadow .18s}.btn:before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(110deg,transparent 20%,#fff8 45%,transparent 68%);transform:translateX(-130%);transition:transform .5s}.btn:hover:before{transform:translateX(130%)}.btn:hover{filter:brightness(1.08);box-shadow:0 5px 0 #885b1d,0 10px 30px #f5c46b3b;transform:translateY(-1px)}.btn:active{transform:translateY(3px) scale(.99);box-shadow:0 1px 0 #885b1d}.btn.s{background:linear-gradient(145deg,#252d3a,#131820);border-color:#424e60;color:var(--tx);box-shadow:0 4px 0 #080a0e,0 8px 20px #0005}.btn.s:hover{border-color:var(--cy);box-shadow:0 4px 0 #080a0e,0 0 22px #5ee6ff24}.leaf{position:fixed;z-index:0;pointer-events:none;top:-40px;left:0;width:14px;height:22px;opacity:.55;filter:drop-shadow(0 0 5px #f5c46b22);animation:leafFall var(--dur,13s) linear var(--delay,0s) infinite;will-change:transform}.leaf:before{content:"";display:block;width:100%;height:100%;background:var(--leaf,#b9d85b);border-radius:100% 0 100% 0;transform:rotate(35deg);box-shadow:inset -2px -1px 2px #0004}.leaf:after{content:"";position:absolute;left:50%;top:2px;width:1px;height:80%;background:#ffffff70;transform:rotate(35deg)}@keyframes leafFall{0%{transform:translate3d(0,-5vh,0) rotate(0)}25%{transform:translate3d(35px,25vh,0) rotate(100deg)}50%{transform:translate3d(-28px,52vh,0) rotate(220deg)}75%{transform:translate3d(42px,78vh,0) rotate(310deg)}100%{transform:translate3d(-10px,115vh,0) rotate(460deg)}}.mini-arena{padding:12px;border:1px solid #303949;border-radius:14px;background:radial-gradient(ellipse at 50% 0,#273342,#0b0e13 75%);overflow:hidden}.mini-track{height:24px;border-radius:8px;background:repeating-linear-gradient(90deg,#252d38 0 10px,#151a22 10px 20px);position:relative;overflow:hidden;margin:14px 0}.mini-target{position:absolute;top:0;bottom:0;background:#4be39a66;border-inline:1px solid var(--gr)}.mini-needle{position:absolute;top:-4px;bottom:-4px;width:4px;background:#fff;box-shadow:0 0 12px #fff;left:0}.mini-score{font-size:12px;color:var(--cy);font-weight:800;letter-spacing:.12em}#ambience{z-index:0;opacity:.42}main,header,nav{position:relative;z-index:1}header{z-index:2}nav{z-index:5}
+#ambience{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.65}
+.stage{isolation:isolate}.stage .tune-glow{position:absolute;inset:auto 8% 18px;height:22px;border-radius:50%;filter:blur(12px);opacity:.7;pointer-events:none;z-index:0}
+.stage svg{position:relative;z-index:1}.stage .stage-badge{position:absolute;right:10px;top:9px;font-size:9px;letter-spacing:.12em;color:var(--cy);text-shadow:0 0 10px currentColor;z-index:2}
+@keyframes neonPulse{50%{opacity:.45;filter:blur(16px)}}.tune-glow{animation:neonPulse 2s ease-in-out infinite}
+@keyframes nitroFlash{0%{opacity:0;transform:scale(.5)}25%{opacity:1}100%{opacity:0;transform:scale(1.5)}}.nitro-flash{position:fixed;inset:0;pointer-events:none;z-index:30;background:radial-gradient(ellipse at 50% 60%,#5ee6ff30,transparent 65%);animation:nitroFlash .6s ease-out forwards}
+
+
+.car-modal{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;padding:18px}.car-modal-backdrop{position:absolute;inset:0;background:#02050be0;backdrop-filter:blur(9px)}.car-modal-panel{position:relative;z-index:1;width:min(650px,100%);max-height:min(90vh,900px);overflow:auto;padding:24px;border:1px solid #5ee6ff45;border-radius:22px;background:linear-gradient(145deg,#151c26f7,#090d13f9);box-shadow:0 25px 100px #000b,0 0 36px #5ee6ff12;animation:modalIn .24s cubic-bezier(.2,.8,.2,1)}.modal-close{float:right;border:1px solid var(--ln);background:#202a36;color:var(--tx);border-radius:10px;padding:9px 12px;cursor:pointer}.modal-car{margin:18px 0 12px;min-height:150px;display:grid;align-items:center}.car-modal-panel h2{font-size:clamp(22px,4vw,32px);margin:10px 0}.car-specs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:16px 0}.car-specs>div{padding:12px;border:1px solid var(--ln);border-radius:12px;background:#ffffff04;display:flex;flex-direction:column;gap:5px}.car-specs span{font-size:11px;color:var(--mut);text-transform:uppercase}.car-specs b{font-size:13px}@keyframes modalIn{from{opacity:0;transform:translateY(12px) scale(.985)}to{opacity:1;transform:none}}@media(max-width:480px){.car-modal-panel{padding:16px}.car-specs{grid-template-columns:1fr 1fr}}
+
+</style></head><body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<linearGradient id="sh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".45"/><stop offset=".45" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#000" stop-opacity=".5"/></linearGradient>
+<linearGradient id="gl" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#6c8aa8"/><stop offset=".5" stop-color="#15222f"/><stop offset="1" stop-color="#0a121a"/></linearGradient>
+<radialGradient id="rm"><stop offset="0" stop-color="#3a414d"/><stop offset=".7" stop-color="#aeb6c2"/><stop offset="1" stop-color="#5a626e"/></radialGradient>
+<linearGradient id="fg" x1="0" y1="0" x2="0" y2="1"><stop offset=".55" stop-color="#000"/><stop offset="1" stop-color="#fff"/></linearGradient><mask id="fm" maskContentUnits="objectBoundingBox"><rect width="1" height="1" fill="url(#fg)"/></mask><linearGradient id="hz" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset=".3" stop-color="#fff" stop-opacity=".07"/><stop offset=".7" stop-color="#fff" stop-opacity=".12"/><stop offset="1" stop-color="#000" stop-opacity=".3"/></linearGradient><radialGradient id="sd"><stop offset="0" stop-color="#000" stop-opacity=".7"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+<linearGradient id="bm" x1="0" x2="1"><stop offset="0" stop-color="#fff6c8" stop-opacity=".5"/><stop offset="1" stop-color="#fff6c8" stop-opacity="0"/></linearGradient>
+</defs></svg>
+<header><div class="w"><div class="top"><div class="av"><i>🏎</i><b id="lvb">1</b></div><h1 id="hd">ГАРАЖ</h1><div class="pill" id="money"></div><button id="soundToggle" class="sound-toggle" aria-label="Звуковые эффекты" title="Звуковые эффекты" onclick="toggleSound()">🔊</button><button id="musicToggle" class="music-toggle" aria-label="Фоновая музыка" title="Фоновая музыка" onclick="toggleMusic()">🎵</button><button id="fullscreenToggle" class="music-toggle" aria-label="На весь экран" title="На весь экран" onclick="toggleFullscreen()">⛶</button></div><div class="row" style="margin-top:10px"><small id="lv"></small><small id="xp"></small></div><div class="bar"><i id="xb" style="background:var(--gold)"></i></div></div></header>
+<main><div class="stats"><div class="stat"><b id="cnt"></b><span>В ГАРАЖЕ</span></div><div class="stat"><b id="prf"></b><span>ПРИБЫЛЬ</span></div><div class="stat"><b id="dls"></b><span>СДЕЛКИ</span></div></div><div id="scr"></div></main>
+<nav id="nav"><button data-t="garage"><b>▰</b>ГАРАЖ</button><button data-t="market"><b>◇</b>РЫНОК</button><button data-t="cases"><b>▣</b>КЕЙСЫ</button><button data-t="play"><b>⚑</b>ИГРЫ</button><button data-t="shop"><b>⚙</b>СЕРВИС</button><button data-t="tuning"><b>🛠</b>ТЮНИНГ</button><button data-t="me"><b>◉</b>ПРОФИЛЬ</button></nav>
+<canvas id="ambience" aria-hidden="true"></canvas><div class="toasts" id="toasts"></div>
+<script>
+"use strict";
+const $=s=>document.querySelector(s),R=(a,b)=>a+Math.random()*(b-a),RI=(a,b)=>Math.floor(R(a,b+1));
+const fmt=n=>Math.round(n).toLocaleString("ru-RU")+" ₽";
+const fmtSec=n=>(n<100? n.toLocaleString("ru-RU",{maximumFractionDigits:1,minimumFractionDigits:n>0&&n<10?1:0}):Math.round(n).toLocaleString("ru-RU"))+" ₽";
+/* Synthesized UI / engine audio: no external assets required */
+let audioCtx=null,soundOn=true,lastSound=0;
+function audio(){try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx}catch(e){return null}}
+function tone(freq=440,dur=.08,type='sine',vol=.035,slide=0,force=false){if(!soundOn&&!force)return;const a=audio();if(!a)return;const t=a.currentTime,o=a.createOscillator(),g=a.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);if(slide)o.frequency.exponentialRampToValueAtTime(Math.max(35,freq+slide),t+dur);g.gain.setValueAtTime(.0001,t);g.gain.exponentialRampToValueAtTime(vol,t+.012);g.gain.exponentialRampToValueAtTime(.0001,t+dur);o.connect(g);g.connect(a.destination);o.start(t);o.stop(t+dur+.02)}
+function sfx(kind='click'){if(!soundOn)return;const now=performance.now();if(kind==='click'&&now-lastSound<35)return;lastSound=now;const seq={click:[[520,.045,'sine',.018,90]],upgrade:[[240,.12,'sawtooth',.025,250],[520,.18,'triangle',.035,420],[780,.2,'sine',.025,160]],paint:[[360,.09,'triangle',.025,220],[680,.14,'sine',.025,160]],win:[[440,.1,'triangle',.025,120],[660,.13,'triangle',.03,150],[880,.2,'sine',.035,180]],fail:[[190,.18,'sawtooth',.025,-90]],engine:[[85,.25,'sawtooth',.025,170],[130,.22,'square',.012,240]],spin:[[95,.12,'sawtooth',.018,90],[135,.12,'sawtooth',.02,160],[180,.12,'sawtooth',.018,220],[230,.12,'sawtooth',.016,260],[280,.12,'triangle',.018,240]],shift:[[160,.08,'square',.02,-65],[440,.09,'triangle',.025,120]],leaf:[[620,.08,'sine',.01,110]]};(seq[kind]||seq.click).forEach((v,i)=>setTimeout(()=>tone(...v),i*(kind==='spin'?95:65)));if(kind==='spin'){let n=0;const rev=setInterval(()=>{if(!soundOn||n++>11){clearInterval(rev);return}tone(100+n*22,.06,'sawtooth',.012,45)},270)}}
+function toggleSound(){soundOn=!soundOn;const b=$('#soundToggle');if(b)b.textContent=soundOn?'🔊':'🔇';if(soundOn){sfx('win');audio();toast('Звуковые эффекты включены')}else toast('Звуковые эффекты выключены')}
+let musicOn=false,musicTimer=null,musicStep=0;const melody=[392,494,587,494,330,392,494,392,294,370,440,370,330,392,494,587];
+function musicTick(){if(!musicOn)return;const a=audio();if(a){const f=melody[musicStep%melody.length];tone(f,0.42,'sine',.012,2,true);if(musicStep%4===0)tone(f/2,.62,'triangle',.009,1,true);if(musicStep%4===2)tone(f*1.5,.22,'sine',.005,1,true)}musicStep++;musicTimer=setTimeout(musicTick,390)}
+function toggleMusic(){musicOn=!musicOn;const b=$('#musicToggle');if(b)b.textContent=musicOn?'🎶':'🎵';if(musicOn){audio();musicTick();toast('Фоновая мелодия включена')}else{clearTimeout(musicTimer);toast('Фоновая мелодия выключена')}}
+function ambient(){const c=$('#ambience');if(!c)return;const ctx=c.getContext('2d');let w=0,h=0,pts=[],leaves=[];function resize(){w=c.width=Math.round(innerWidth*(devicePixelRatio||1));h=c.height=Math.round(innerHeight*(devicePixelRatio||1));c.style.width=innerWidth+'px';c.style.height=innerHeight+'px';pts=Array.from({length:Math.min(65,Math.floor(innerWidth/20))},()=>({x:Math.random()*w,y:Math.random()*h,r:Math.random()*1.7+.3,v:Math.random()*.35+.08,a:Math.random()*.5+.12,cyan:Math.random()>.65}));leaves=Array.from({length:Math.min(18,Math.max(8,Math.floor(innerWidth/65)))},()=>({x:Math.random()*w,y:Math.random()*h,sz:(Math.random()*8+6)*(devicePixelRatio||1),v:(Math.random()*.45+.18)*(devicePixelRatio||1),s:Math.random()*6.28,spin:Math.random()*.035+.008,hue:Math.random()>.45?35:75}))}resize();addEventListener('resize',resize,{passive:true});function frame(){ctx.clearRect(0,0,w,h);for(const p of pts){p.y-=p.v*(devicePixelRatio||1);p.x+=Math.sin(p.y*.003)*.12;if(p.y<0){p.y=h;p.x=Math.random()*w}ctx.beginPath();ctx.arc(p.x,p.y,p.r*(devicePixelRatio||1),0,Math.PI*2);ctx.fillStyle=p.cyan?`rgba(94,230,255,${p.a})`:`rgba(245,196,107,${p.a*.7})`;ctx.fill()}for(const l of leaves){l.y+=l.v;l.x+=Math.sin(l.y*.009+l.s)*.55;l.s+=l.spin;if(l.y>h+30){l.y=-20;l.x=Math.random()*w}ctx.save();ctx.translate(l.x,l.y);ctx.rotate(Math.sin(l.s)*.7);ctx.fillStyle=`hsla(${l.hue},${l.hue===35?'72%':'48%'},${l.hue===35?'62%':'58%'},.58)`;ctx.beginPath();ctx.moveTo(0,-l.sz);ctx.quadraticCurveTo(l.sz*1.1,-l.sz*.3,0,l.sz);ctx.quadraticCurveTo(-l.sz*1.1,-l.sz*.3,0,-l.sz);ctx.fill();ctx.strokeStyle='rgba(255,255,255,.3)';ctx.lineWidth=.7;ctx.beginPath();ctx.moveTo(0,-l.sz*.75);ctx.lineTo(0,l.sz*.7);ctx.stroke();ctx.restore()}requestAnimationFrame(frame)}frame();addEventListener('pointerdown',()=>{if(musicOn&&audioCtx?.state==='suspended')audioCtx.resume()},{once:true,passive:true})}
+function fallingLeaves(){if(document.querySelector('.leaf'))return;const colors=['#c8d86a','#d5a04c','#6eaa75','#e3c06b'];for(let i=0;i<10;i++){const e=document.createElement('i');e.className='leaf';e.style.left=(Math.random()*100)+'%';e.style.setProperty('--dur',(11+Math.random()*13)+'s');e.style.setProperty('--delay',(-Math.random()*20)+'s');e.style.setProperty('--leaf',colors[i%colors.length]);e.style.width=(9+Math.random()*9)+'px';e.style.height=(14+Math.random()*13)+'px';document.body.appendChild(e)}}
+
+/* g=[хвост,нос,багажник,низ заднего стекла,крыша зад,крыша перед,низ лобового,капот,крыша(y),колесо,флаги] w крыло r круглые фары p выдвижные b угловатый s полоса h воздухозаборник x внедорожник */
+const CARS=[
+{id:1,n:"BMW M3 E46",hp:343,price:340000,cond:78,kind:"СПОРТ",col:"#2f6fb5",g:[22,298,54,76,102,180,214,60,24,17,"h"]},
+{id:2,n:"ВАЗ-2107",hp:75,price:78000,cond:62,kind:"КЛАССИКА",col:"#c9ced6",g:[26,294,60,76,90,186,204,62,24,16,"b"]},
+{id:3,n:"Mercedes W124",hp:150,price:155000,cond:71,kind:"КЛАССИКА",col:"#c3c8cf",g:[24,298,54,72,88,190,212,58,22,17,"b"]},
+{id:4,n:"Nissan Skyline R34",hp:280,price:540000,cond:84,kind:"СПОРТ",col:"#2b55b8",g:[22,298,56,70,96,176,212,62,26,17,"w"]},
+{id:5,n:"Toyota Land Cruiser",hp:235,price:670000,cond:90,kind:"ВНЕДОРОЖНИК",col:"#b9bdc4",g:[24,300,30,26,32,206,224,50,10,21,"bx"]},
+{id:6,n:"Porsche 911",hp:385,price:980000,cond:93,kind:"ЭЛИТА",col:"#d8dce2",g:[34,290,60,92,134,176,206,70,30,17,"r"]},
+{id:7,n:"Lada Vesta",hp:106,price:245000,cond:86,kind:"КОМФОРТ",col:"#a52b35",g:[24,298,54,70,92,186,214,60,24,17,""]},
+{id:8,n:"Audi RS6 Avant",hp:600,price:1150000,cond:89,kind:"ЭЛИТА",col:"#6d7885",g:[22,300,40,28,36,196,222,60,22,18,""]},
+{id:9,n:"Toyota AE86",hp:130,price:240000,cond:58,kind:"КЛАССИКА",col:"#eceef0",g:[30,292,62,98,114,178,210,66,32,16,"ps"]},
+{id:10,n:"Subaru Impreza STI",hp:300,price:465000,cond:75,kind:"СПОРТ",col:"#2347a8",g:[24,296,56,78,96,180,206,62,26,17,"wh"]},
+{id:11,n:"Mercedes G-Wagen",hp:420,price:890000,cond:81,kind:"ВНЕДОРОЖНИК",col:"#4c545e",g:[28,296,34,28,30,212,216,52,10,21,"brx"]},
+{id:12,n:"Lamborghini Huracan",hp:610,price:1500000,cond:95,kind:"ЭЛИТА",col:"#e9c21a",g:[22,304,64,84,130,170,214,72,44,17,"w"]},
+{id:13,n:"Ford Mustang",hp:450,price:760000,cond:83,kind:"СПОРТ",col:"#b02a35",g:[22,302,60,88,124,180,222,62,30,18,"s"]},
+{id:14,n:"Lada Niva Legend",hp:83,price:110000,cond:68,kind:"ВНЕДОРОЖНИК",col:"#9ba39a",g:[34,290,36,36,38,190,214,56,18,19,"bx"]},
+{id:15,n:"Audi Quattro",hp:220,price:390000,cond:77,kind:"КЛАССИКА",col:"#d5d9de",g:[24,296,54,82,98,178,208,60,26,17,"b"]},
+{id:16,n:"McLaren 720S",hp:720,price:1900000,cond:96,kind:"ЭЛИТА",col:"#f2762a",g:[22,304,60,92,128,176,214,74,46,17,""]},
+{id:17,n:"Honda Civic Type R",hp:320,price:590000,cond:82,kind:"СПОРТ",col:"#e8ebef",g:[28,294,44,42,58,186,212,62,26,17,"w"]},
+{id:18,n:"Mazda RX-7 FD",hp:280,price:610000,cond:69,kind:"СПОРТ",col:"#8d303a",g:[26,300,62,100,126,172,212,68,40,17,"p"]},
+{id:19,n:"Volvo 240",hp:115,price:145000,cond:73,kind:"КЛАССИКА",col:"#7e8994",g:[24,298,52,70,84,192,214,58,20,17,"b"]},
+{id:20,n:"BMW M5 CS",hp:635,price:1680000,cond:91,kind:"ЭЛИТА",col:"#5f7185",g:[22,300,54,70,98,184,212,60,24,18,"h"]},
+{id:21,n:"Dodge Charger",hp:485,price:910000,cond:85,kind:"СПОРТ",col:"#8f2630",g:[20,304,56,78,104,188,218,62,26,18,"hs"]},
+{id:22,n:"Renault Logan",hp:102,price:115000,cond:66,kind:"КОМФОРТ",col:"#b9c0c8",g:[26,294,48,68,84,190,214,60,22,16,""]},
+{id:23,n:"Bentley Continental GT",hp:550,price:1780000,cond:92,kind:"ЭЛИТА",col:"#3b4a3f",g:[22,302,58,84,120,182,214,62,30,18,"r"]},
+{id:24,n:"Toyota Supra A80",hp:330,price:940000,cond:79,kind:"СПОРТ",col:"#e07b22",g:[24,300,56,88,122,170,208,68,36,17,"w"]}];
+const byId=id=>CARS.find(c=>c.id===+id);
+const CASES=[
+{id:"scrap",n:"СВАЛКА",ic:"⌁",d:"Дешёвые находки под восстановление",ids:[2,9,14,22,19],w:[30,15,25,20,10]},
+{id:"retro",n:"ГАРАЖ СССР",ic:"▤",d:"Классика с потенциалом",ids:[2,9,14,15,3,19],w:[22,12,18,10,14,24]},
+{id:"eco",n:"ПЕРВЫЙ АВТО",ic:"01",d:"Надёжные повседневные авто",ids:[2,7,14,22,19],w:[15,20,20,25,20]},
+{id:"street",n:"УЛИЧНЫЕ ГОНКИ",ic:"///",d:"Спорткары и JDM",ids:[1,4,10,13,17,18,24],w:[16,10,16,10,18,20,10]},
+{id:"comf",n:"КОМФОРТ+",ic:"+",d:"Практичные авто классом выше",ids:[3,5,7,8,11,17,22],w:[20,10,22,2,4,14,28]},
+{id:"prem",n:"ПРЕМИУМ",ic:"◆",d:"Мощность, комфорт и статус",ids:[5,8,11,13,17,21],w:[22,6,14,18,22,18]},
+{id:"jdm",n:"JDM ЛЕГЕНДЫ",ic:"弐",d:"Японские коллекционные модели",ids:[4,9,10,18,24],w:[18,26,22,20,14]},
+{id:"off",n:"БЕЗДОРОЖЬЕ",ic:"△",d:"Внедорожники для большой дороги",ids:[5,11,14,2],w:[26,14,40,20]},
+{id:"super",n:"СУПЕРКАРЫ",ic:"✦",d:"Редкие и быстрые",ids:[6,12,13,16,20,23],w:[24,10,32,6,16,12]},
+{id:"black",n:"BLACK LABEL",ic:"■",d:"Топ премиум-класса",ids:[6,8,12,16,20,23],w:[26,18,12,6,20,18]},
+{id:"one",n:"ONE OF ONE",ic:"∞",d:"Охота за легендами",ids:[6,12,16,20,23,24],w:[22,14,8,18,20,18]}];
+const TIERS=[["ОБЫЧНАЯ","#9aa3ad",0],["НЕОБЫЧНАЯ","#63bd86",150000],["РЕДКАЯ","#56a6ff",350000],["ЭПИЧЕСКАЯ","#b77aff",700000],["ЛЕГЕНДАРНАЯ","#ffc45c",1200000]];
+const rar=c=>{let t=TIERS[0];TIERS.forEach(x=>{if(c.price>=x[2])t=x});return{name:t[0],color:t[1],i:TIERS.indexOf(t)}};
+/* Баланс кейсов: цена = средняя стоимость выпадения / 0.9 (кейс всегда чуть невыгоден — выигрыш даёт шанс на редкую машину) */
+CASES.forEach(b=>{const tw=b.w.reduce((a,c)=>a+c,0);b.ev=b.ids.reduce((s,id,i)=>s+b.w[i]/tw*byId(id).price*byId(id).cond/100*.92,0);b.price=Math.max(10000,Math.round(b.ev/.9/5000)*5000)});
+const TG=window.Telegram?.WebApp||null;
+const TGUSER=TG?.initDataUnsafe?.user||null;
+const TGID=TGUSER?.id?String(TGUSER.id):"";
+const MAX=8,CAP=4*3600000,SK="avantgarde_v2"+(TGID?"_tg_"+TGID:"_guest");
+const val=o=>Math.round(byId(o.id).price*o.cond/100);
+const sellP=o=>Math.round(val(o)*(o.broken?.55:.92));
+// Пассивный доход зависит от рыночной стоимости: дорогие автомобили приносят больше в час и в секунду.
+const rate=c=>Math.min(.42,.10+.30*Math.sqrt(Math.max(0,c.price)/1900000));
+const carIncomeHour=o=>o.broken?0:Math.round(val(o)*rate(byId(o.id)));
+const perHour=()=>state.owned.reduce((s,o)=>s+carIncomeHour(o),0);
+const perSecond=()=>perHour()/3600;
+const ready=()=>Math.floor(perHour()*Math.min(CAP,Math.max(0,Date.now()-state.last))/3600000);
+const uid=()=>Date.now()*1000+RI(0,999);
+function fresh(){return{money:120000,owned:[{uid:uid(),id:2,cost:48000,cond:62,broken:false,tune:{engine:0,turbo:0,suspension:0,nitro:0,paint:""}}],xp:0,deals:0,profit:0,opened:0,repairs:0,last:Date.now(),daily:"",market:null,cd:{},redeemedPromo:[]}}
+function load(){
+  const defaults=fresh();
+  const candidates=[];
+  try{candidates.push(localStorage.getItem(SK))}catch(e){}
+  try{candidates.push(sessionStorage.getItem(SK))}catch(e){}
+  if(!TGID){try{candidates.push(localStorage.getItem("avantgarde_v2"))}catch(e){}try{candidates.push(sessionStorage.getItem("avantgarde_v2"))}catch(e){}}
+  for(const raw of candidates){
+    if(!raw)continue;
+    try{
+      const r=JSON.parse(raw);if(!r||typeof r!=="object"||!Number.isFinite(+r.money)||!Array.isArray(r.owned))continue;
+      const n=(v,f)=>Number.isFinite(+v)?+v:f;
+      return {money:Math.max(0,n(r.money,defaults.money)),owned:r.owned.filter(o=>o&&byId(o.id)).slice(0,MAX).map((o,i)=>({uid:n(o.uid,uid()+i),id:+o.id,cost:n(o.cost,0),cond:Math.max(5,Math.min(100,n(o.cond,50))),broken:!!o.broken,tune:{engine:Math.max(0,Math.min(5,n(o.tune?.engine,0))),turbo:Math.max(0,Math.min(3,n(o.tune?.turbo,0))),suspension:Math.max(0,Math.min(3,n(o.tune?.suspension,0))),nitro:Math.max(0,Math.min(3,n(o.tune?.nitro,0))),paint:o.tune?.paint||""}})),xp:n(r.xp,0),deals:n(r.deals,0),profit:n(r.profit,0),opened:n(r.opened,0),repairs:n(r.repairs,0),last:Math.min(Date.now(),n(r.last,Date.now())),daily:String(r.daily||""),market:r.market&&Array.isArray(r.market.list)?r.market:null,cd:r.cd&&typeof r.cd==="object"?r.cd:{},redeemedPromo:Array.isArray(r.redeemedPromo)?r.redeemedPromo:[],savedAt:n(r.savedAt,0)};
+    }catch(e){}
+  }
+  return defaults;
+}
+let state=load(),tab="garage",busy=false;try{localStorage.removeItem(SK+"_backup");localStorage.removeItem("avantgarde_v2_backup")}catch(e){}try{sessionStorage.removeItem(SK+"_backup");sessionStorage.removeItem("avantgarde_v2_backup")}catch(e){}state.cd=state.cd||{};state.owned.forEach(o=>{o.tune=o.tune||{engine:0,turbo:0,suspension:0,nitro:0,paint:""}});
+let cloudTimer=null,lastCloudPush=0,cloudReady=false;
+const cloudAvailable=()=>!!(TGID&&TG?.CloudStorage?.getItem&&TG?.CloudStorage?.setItem);
+function tgCall(method,...args){return new Promise(resolve=>{try{TG.CloudStorage[method](...args,(err,result)=>resolve(err?null:result))}catch(e){resolve(null)}})}
+async function cloudRead(){if(!cloudAvailable())return null;const countRaw=await tgCall('getItem',SK+'_parts');const count=Math.max(0,Math.min(20,parseInt(countRaw||'0',10)||0));if(!count)return null;let out='';for(let i=0;i<count;i++){const part=await tgCall('getItem',SK+'_p'+i);if(typeof part!=='string')return null;out+=part;}try{const data=JSON.parse(out);return data&&Array.isArray(data.owned)&&Number.isFinite(+data.money)?out:null}catch(e){return null}}
+async function cloudWrite(raw){if(!cloudAvailable()||!cloudReady)return;const chunks=raw.match(/[\s\S]{1,3300}/g)||[raw];if(chunks.length>20)return;for(let i=0;i<chunks.length;i++){const ok=await tgCall('setItem',SK+'_p'+i,chunks[i]);if(ok===null)return;}await tgCall('setItem',SK+'_parts',String(chunks.length));lastCloudPush=Date.now();}
+function scheduleCloudSave(){if(!cloudAvailable()||!cloudReady)return;clearTimeout(cloudTimer);cloudTimer=setTimeout(()=>cloudWrite(JSON.stringify(state)),1400)}
+function addTelegramStatus(){if(!TGID)return;const main=$('main');if(!main||document.getElementById('tgAccountStatus'))return;const d=document.createElement('div');d.id='tgAccountStatus';d.className='tg-account';const name=[TGUSER?.first_name,TGUSER?.last_name].filter(Boolean).join(' ')||'Telegram';d.innerHTML=`<span>◉</span><span>Аккаунт <b>${name.replace(/[&<>"']/g,'')}</b><br><span class="tg-status">Профиль привязан к Telegram · облачное сохранение ${cloudAvailable()?'доступно':'недоступно'}</span></span>`;main.insertBefore(d,main.firstChild)}
+function save(r=true){state.savedAt=Date.now();const data=JSON.stringify(state);try{localStorage.setItem(SK,data)}catch(e){try{sessionStorage.setItem(SK,data)}catch(e2){toast("Не удалось сохранить: проверь доступность хранилища браузера")}}head();scheduleCloudSave();if(r)render()}
+function toggleFullscreen(){const el=document.documentElement;try{if(!document.fullscreenElement){(el.requestFullscreen||el.webkitRequestFullscreen)?.call(el);toast('Полноэкранный режим')}else{(document.exitFullscreen||document.webkitExitFullscreen)?.call(document);}}catch(e){toast('Полный экран недоступен в этом браузере')}}
+document.addEventListener('fullscreenchange',()=>{const b=$('#fullscreenToggle');if(b)b.textContent=document.fullscreenElement?'⤢':'⛶'});
+window.addEventListener('pagehide',()=>{const raw=JSON.stringify(state);try{localStorage.setItem(SK,raw)}catch(e){try{sessionStorage.setItem(SK,raw)}catch(e2){}}if(cloudAvailable()&&cloudReady)cloudWrite(raw)});
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='hidden'){const raw=JSON.stringify(state);try{localStorage.setItem(SK,raw)}catch(e){try{sessionStorage.setItem(SK,raw)}catch(e2){}}if(cloudAvailable()&&cloudReady)cloudWrite(raw)}});
+
+const lvl=()=>1+Math.floor(state.xp/500);
+let mv=null,mt=0;function cnt(v){const e=$("#money");if(mv===null){mv=v;e.textContent=fmt(v);return}const a=mv,t0=performance.now();cancelAnimationFrame(mt);const f=n=>{const k=Math.min(1,(n-t0)/600);mv=a+(v-a)*k;e.textContent=fmt(mv);if(k<1)mt=requestAnimationFrame(f)};mt=requestAnimationFrame(f)}
+function head(){
+  cnt(state.money);$("#lv").textContent="УРОВЕНЬ "+lvl();$("#lvb").textContent=lvl();$(".av").style.setProperty("--p",(state.xp%500)/5+"%");$("#xp").textContent=state.xp%500+" / 500 XP";$("#xb").style.width=(state.xp%500)/5+"%";
+  $("#cnt").textContent=state.owned.length+"/"+MAX;$("#prf").textContent=fmt(state.profit);$("#dls").textContent=state.deals;
+document.querySelectorAll("#nav button").forEach(b=>b.classList.toggle("on",b.dataset.t===tab));
+}
+function toast(m){const t=document.createElement("div");t.className="toast";t.textContent=m;$("#toasts").appendChild(t);setTimeout(()=>t.remove(),2800)}
+function burst(col="#f5c46b",n=34){for(let i=0;i<n;i++){const e=document.createElement("i");e.className="cf";e.style.cssText=`left:${innerWidth/2}px;top:${innerHeight/2.4}px;background:${i%3?col:"#fff"};--dx:${R(-220,220)}px;--dy:${R(-220,260)}px;--rt:${RI(-540,540)}deg`;document.body.appendChild(e);setTimeout(()=>e.remove(),1400)}}
+/* ===== Машина (SVG) ===== */
+/* ===== Индивидуальные иллюстрации ===== */
+const mir=(x,y,K)=>`<path d="M${x} ${y}l-9 -1v5h9z" fill="${K}" stroke="#0008"/>`;
+const ART={
+6:{w:[82,238,17,5],n:298,ny:72,s:[250,60],
+b:"M26 86L26 68Q26 58 38 57L60 55Q92 40 130 34Q156 30 178 36L222 58Q254 64 278 69Q297 73 298 82L298 86Z",
+g:"M80 54Q106 41 132 37L172 38L206 54Z",
+x:K=>`${mir(204,52,K)}<path d="M128 55V80M142 61h10" stroke="#0008" stroke-width="1.2" fill="none"/><path d="M104 84H216" stroke="#0007" stroke-width="2"/><circle cx="272" cy="67" r="7" fill="#eef2f6" stroke="#444" stroke-width="1.6"/><circle cx="272" cy="67" r="3.5" fill="#9fb4c6"/><rect x="25" y="60" width="5" height="7" rx="2" fill="#ff2d3d"/><path d="M270 80h28v4h-28z" fill="#0b0d10"/>`},
+12:{w:[82,240,17,5],n:300,ny:74,s:[250,64],
+b:"M22 86L22 72L34 64L84 60L118 44Q150 36 172 40L232 64L292 72Q300 76 300 82L300 86Z",
+g:"M122 47Q150 40 168 43L204 58L116 58Z",
+x:K=>`${mir(198,57,K)}<path d="M96 62L134 60L128 75L100 77Z" fill="#0b0d10"/><path d="M258 68L292 72L289 76L255 71Z" fill="#e8f6ff"/><path d="M272 72L286 78" stroke="#0b0d10" stroke-width="2"/><path d="M246 84H300V86H246z" fill="#0b0d10"/><path d="M22 70l9-2v7l-9 2z" fill="#ff2d3d"/><path d="M22 80H62V86H22z" fill="#0b0d10"/>`},
+16:{w:[84,240,17,5],n:300,ny:75,s:[250,64],
+b:"M22 86L22 70Q24 62 38 60L90 58Q112 40 150 37Q176 36 196 48L240 62Q282 66 298 76L300 86Z",
+g:"M100 56Q122 42 150 40Q172 40 190 50L204 58L96 58Z",
+x:K=>`${mir(196,56,K)}<path d="M118 59Q150 52 188 64L180 75Q148 66 124 71Z" fill="#0b0d10"/><path d="M254 65Q276 62 292 73L288 76Q272 69 256 69Z" fill="#dff1ff"/><path d="M22 66H40" stroke="#ff2d3d" stroke-width="3"/><path d="M28 58L66 55" stroke="#111" stroke-width="3"/><path d="M250 84H300V86H250z" fill="#0b0d10"/>`},
+24:{w:[84,238,17,5],n:298,ny:68,s:[248,58],
+b:"M24 86L24 62Q26 56 40 55L64 54Q98 52 116 38Q130 30 160 30Q184 30 200 42L236 58Q282 62 296 72L298 86Z",
+g:"M118 41Q132 34 158 34Q180 34 195 45L207 56L100 55Z",
+x:K=>`${mir(206,55,K)}<path d="M20 46H58V50H20z" fill="${K}" stroke="#0009"/><path d="M30 50V58M48 50V58" stroke="#0d0f13" stroke-width="3"/><path d="M262 62L290 68L288 72L260 66Z" fill="#e8f2f9"/><circle cx="28" cy="63" r="3.2" fill="#ff2d3d"/><circle cx="28" cy="70" r="3.2" fill="#ff2d3d"/><path d="M276 74H298V84H276z" fill="#0b0d10"/><path d="M116 55V80" stroke="#0008" fill="none"/>`},
+4:{w:[82,238,17,5],n:298,ny:68,s:[246,58],
+b:"M24 86L24 60Q26 54 40 53L72 52L104 36Q112 30 130 30L172 30Q186 30 196 38L228 56L276 62Q294 64 298 74L298 86Z",
+g:"M88 52L110 38L132 33L172 33L190 40L208 53Z",
+x:K=>`${mir(210,54,K)}<path d="M18 40H52V44H18z" fill="${K}" stroke="#0009"/><path d="M28 44V54M44 44V54" stroke="#111" stroke-width="3"/><path d="M262 63L290 67L289 72L261 69Z" fill="#e8f2f9"/><circle cx="27" cy="62" r="3" fill="#ff2d3d"/><circle cx="27" cy="69" r="3" fill="#ff2d3d"/><path d="M240 58H258" stroke="#0007" stroke-width="3"/><path d="M276 73H298V83H276z" fill="#0b0d10"/><path d="M120 53V80" stroke="#0008" fill="none"/>`},
+11:{w:[78,242,20,6],n:298,ny:54,s:[256,46],
+b:"M30 82L30 30Q30 26 36 26L196 26Q202 26 204 30L212 50L292 50Q298 50 298 56L298 82Z",
+g:"M44 32H112V52H44ZM120 32H194L202 52H120Z",
+x:K=>`${mir(206,50,K)}<circle cx="24" cy="56" r="14" fill="#14161a" stroke="#3a3f48" stroke-width="3"/><circle cx="24" cy="56" r="6" fill="#25282e"/><path d="M50 24H190" stroke="#14161a" stroke-width="3"/><rect x="108" y="56" width="8" height="2" fill="#0009"/><circle cx="284" cy="56" r="6" fill="#f4f6f8" stroke="#555" stroke-width="2"/><rect x="290" y="62" width="8" height="12" fill="#15171b" stroke="#cfd5dc"/><path d="M284 74H298V82H284z" fill="#0b0d10"/><path d="M116 52V76" stroke="#0008" fill="none"/>`},
+9:{w:[84,236,17,5],n:298,ny:68,s:[248,58],
+b:"M30 86L30 62Q31 56 42 55L82 54L110 36Q120 32 136 32L170 32Q184 33 192 40L222 58L284 62Q296 64 297 72L298 86Z",
+g:"M88 52L112 38L168 36L186 41L210 54Z",
+x:K=>`<path d="M30 74H298V86H30z" fill="#111"/><path d="M222 58L284 62V66L222 62z" fill="#111"/>${mir(210,54,"#0b0d10")}<rect x="29" y="58" width="5" height="9" fill="#ff2d3d"/><rect x="268" y="55" width="12" height="7" rx="3" fill="#fff" stroke="#888"/><rect x="262" y="63" width="16" height="4" rx="2" fill="#2a2d33"/><path d="M132 54V74" stroke="#0008" fill="none"/>`},
+13:{w:[84,242,18,5],n:302,ny:70,s:[250,60],
+b:"M22 86L22 62Q23 56 36 55L66 54Q96 50 124 36Q140 30 166 32Q186 36 204 48L232 58L284 62Q298 64 301 74L302 86Z",
+g:"M96 53Q116 40 132 36L164 35Q182 38 198 50L206 55Z",
+x:K=>`${mir(206,54,K)}<path d="M60 76L264 76" stroke="#f4f6f8" stroke-width="3" opacity=".8"/><path d="M22 60h4v7h-4z" fill="#ff2d3d"/><path d="M28 60h3v7h-3zM33 60h3v7h-3z" fill="#c0222f"/><path d="M268 62L296 66L295 71L267 67Z" fill="#e8f2f9"/><path d="M284 72H302V83H284z" fill="#0b0d10"/><circle cx="293" cy="77" r="2" fill="#cfd5dc"/><path d="M128 54V78" stroke="#0008" fill="none"/>`}
+};
+const wl=(x,y,r,n=5,rc)=>`<circle cx="${x}" cy="${y}" r="${r+4}" fill="#04060a"/><circle cx="${x}" cy="${y}" r="${r}" fill="#0b0c0f" stroke="#1d2025" stroke-width="2.5"/><circle cx="${x}" cy="${y}" r="${r*.84}" fill="none" stroke="#2a2d33" stroke-width=".8"/><circle cx="${x}" cy="${y}" r="${r*.62}" fill="#444a53"/><path d="M${x-r*.36} ${y-r*.4}A${r*.54} ${r*.54} 0 0 1 ${x+r*.42} ${y-r*.34}" stroke="#d6283a" stroke-width="3" fill="none"/><g class="spin" style="transform-origin:${x}px ${y}px"><circle cx="${x}" cy="${y}" r="${r*.7}" fill="none" stroke="${rc||"url(#rm)"}" stroke-width="${r*.13}"/>${Array.from({length:n*2},(_,i)=>{const a=i*3.1416/n;return`<line x1="${x}" y1="${y}" x2="${x+Math.cos(a)*r*.68}" y2="${y+Math.sin(a)*r*.68}" stroke="${i%2?"#7d8591":rc||"#c9d0d8"}" stroke-width="${i%2?1.1:2.6}"/>`}).join("")}</g><circle cx="${x}" cy="${y}" r="2.6" fill="#aeb6c0"/>`;
+function art(c,o){
+  const a=ART[c.id],K=o.cond<30?"#6b727c":(o.tune?.paint||c.col),[x1,x2,r,n,rc]=a.w,y=100-r;
+  const t=o.tune||{},eng=t.engine||0,turbo=t.turbo||0,susp=t.suspension||0,nos=t.nitro||0;
+  const total=eng+turbo+susp+nos;
+  // All visual parts are clipped to this exact model's body silhouette. This prevents floating geometry and tuning artifacts.
+  const stripes=eng>=1?`<path d="M55 65L${a.n-14} 69" stroke="#f7f8fa" stroke-width="2.1" opacity=".92"/><path d="M58 69L${a.n-18} 73" stroke="#111820" stroke-width="1.3" opacity=".9"/>`:'';
+  const ecu=eng>=3?`<path d="M112 57L145 55L155 59L120 62Z" fill="#fff" opacity=".82"/><path d="M116 58L148 57" stroke="#10141b" stroke-width="1.3"/>`:'';
+  const turboMod=turbo>=1?`<path d="M${a.n-40} ${a.ny+1}l22 -3 -3 5 -19 2z" fill="#10151c" stroke="#d5e3ee" stroke-width="1.1"/>`:'';
+  const wing=turbo>=2?`<path d="M${a.n-43} ${a.ny-5}l28 -2 2 3 -30 3z" fill="#141a23" stroke="#c9d4df" stroke-width="1.2"/><path d="M${a.n-39} ${a.ny-2}v5M${a.n-20} ${a.ny-3}v5" stroke="#aebdca" stroke-width="1.3"/>`:'';
+  const bigTurbo=turbo>=3?`<path d="M${a.n-38} ${a.ny+7}l-14 1 3 3 11 -1z" fill="#5ee6ff" stroke="#e6fcff" stroke-width=".8"/>`:'';
+  const sideSkirt=susp>=1?`<path d="M${x1+12} ${y+11}L${x2-8} ${y+11}" stroke="#111820" stroke-width="4" stroke-linecap="round"/>`:'';
+  const lowered=susp>=2?`<path d="M${x1-r-5} ${y+7}H${x2+r+5}" stroke="#d6e1ed" stroke-width="1.5" opacity=".75"/>`:'';
+  const aero=susp>=3?`<path d="M${x1-10} ${y+13}L${x1-16} ${y+16}H${x2+17}L${x2+10} ${y+13}Z" fill="#10151c" stroke="#5ee6ff" stroke-width="1"/>`:'';
+  const nosGlow=nos?`<path d="M${a.n-4} ${a.ny+8}L${a.n+18} ${a.ny+3}L${a.n+4} ${a.ny+12}L${a.n+21} ${a.ny+10}L${a.n-3} ${a.ny+18}Z" fill="#5ee6ff" opacity="${.22+nos*.13}"/>`:'';
+  const nosBolt=nos>=2?`<path d="M136 67l7 0 -4 5 7 0 -13 9 3 -6 -7 0z" fill="#5ee6ff" stroke="#dffaff" stroke-width=".5"/>`:'';
+  const premium=total>=5?`<path d="M${x1+12} ${y+5}H${x2-12}" stroke="${K}" stroke-width="1.5" opacity=".9"/>`:'';
+  const classDetail=c.kind==='ВНЕДОРОЖНИК'&&turbo>=1?`<path d="M88 29H204M94 27V32M198 27V32" stroke="#c8d2dd" stroke-width="1.8"/>`:c.kind==='КЛАССИКА'&&eng>=1?`<path d="M78 58L110 42" stroke="#f5c46b" stroke-width="1.8" opacity=".9"/>`:'';
+  return `<svg viewBox="0 0 320 112" class="income-motion" role="img" aria-label="${c.n}, тюнинг ${total} уровней"><defs><clipPath id="tuneClip${c.id}"><path d="${a.b}"/></clipPath></defs><ellipse cx="160" cy="101" rx="150" ry="8" fill="url(#sd)"/><path d="${a.b}" fill="${K}" stroke="#0009" stroke-width="1.3" stroke-linejoin="round"/><path d="${a.b}" fill="url(#sh)"/><path d="${a.b}" fill="url(#hz)"/><path d="${a.g}" fill="url(#gl)" stroke="#0008"/><path d="${a.b}" fill="none" stroke="#fff" stroke-opacity=".18" transform="translate(0,1.3)"/>${c.kind==='КЛАССИКА'?`<path d="M${x1+5} 80L${x2-8} 80" stroke="#f5c46b" stroke-width="1.3" opacity=".8"/>`:''}<g clip-path="url(#tuneClip${c.id})">${stripes}${ecu}${turboMod}${wing}${bigTurbo}${sideSkirt}${lowered}${aero}${premium}${classDetail}</g>${nosGlow}${nosBolt}${wl(x1,y,r,n,turbo?"#5ee6ff":rc)}${wl(x2,y,r,n,turbo?"#5ee6ff":rc)}${a.x(K)}${o.cond<45?`<path d="${a.b}" fill="#3a2a1a" opacity=".16"/>`:''}${o.broken?`<g class="smk"><circle cx="${a.s[0]}" cy="${a.s[1]}" r="6"/><circle cx="${a.s[0]+6}" cy="${a.s[1]}" r="6"/><circle cx="${a.s[0]-6}" cy="${a.s[1]}" r="6"/></g>`:''}</svg>`;
+}
+const slats=(x,y,w,h,k)=>Array.from({length:k},(_,i)=>`<path d="M${x} ${y+(i+1)*h/(k+1)}h${w}" stroke="#cfd5dc" stroke-width=".8"/>`).join("");
+Object.assign(ART,{
+8:{w:[76,242,18,5],n:300,ny:66,s:[256,56],
+b:"M20 86L20 50Q20 45 26 44L70 38L84 30Q88 28 96 28L184 28Q196 29 204 37L230 52L280 58Q298 61 300 72L300 86Z",
+g:"M76 46L90 33L184 33Q192 34 198 41L216 52L76 51Z",
+x:K=>`${mir(208,52,K)}<path d="M90 27H186" stroke="#c9d0d8" stroke-width="2"/><path d="M100 33L97 51M146 33V51" stroke="#0b0d10" stroke-width="2.2"/><path d="M146 52V80M100 51V80M190 53V80" stroke="#0008" fill="none"/><path d="M118 58h8M162 58h8" stroke="#0009" stroke-width="2"/><path d="M30 58L284 66" stroke="#fff" stroke-opacity=".3" fill="none"/><path d="M262 58L294 64L293 68L261 63Z" fill="#e8f4ff"/><path d="M262 60L293 65" stroke="#7fd4ff"/><path d="M284 68H300V84H284Z" fill="#101114" stroke="#cfd5dc"/>${slats(286,68,13,16,3)}<path d="M20 50H31V56H20Z" fill="#ff2d3d"/><ellipse cx="23" cy="83" rx="4" ry="2.6" fill="#222" stroke="#aab"/><path d="M96 84H224" stroke="#0007" stroke-width="2"/>`},
+1:{w:[80,238,17,5],n:298,ny:68,s:[246,58],
+b:"M22 86L22 58Q23 52 32 51L74 50L104 34Q112 28 128 28L170 28Q184 29 194 36L222 52L278 58Q296 62 298 72L298 86Z",
+g:"M80 50L106 36L128 31L170 31Q182 32 190 38L208 51Z",
+x:K=>`${mir(206,52,K)}<path d="M226 54L276 58" stroke="#fff" stroke-opacity=".35" fill="none"/><rect x="282" y="66" width="7" height="9" rx="3" fill="#111" stroke="#cfd5dc"/><rect x="291" y="67" width="7" height="9" rx="3" fill="#111" stroke="#cfd5dc"/><path d="M262 58L292 64L291 69L261 63Z" fill="#eaf4ff"/><circle cx="277" cy="63" r="3.2" fill="none" stroke="#bfe3ff" stroke-width="1.5"/><path d="M208 68h11v7h-11z" fill="#0b0d10"/><path d="M210 70h8M210 73h8" stroke="#cfd5dc" stroke-width=".8"/><path d="M22 56H34V64H22Z" fill="#c4172a"/><circle cx="27" cy="85" r="2.4" fill="#222" stroke="#aab"/><circle cx="34" cy="85" r="2.4" fill="#222" stroke="#aab"/><path d="M262 84H298V86H262z" fill="#0b0d10"/><path d="M124 52V80M176 54V80" stroke="#0008" fill="none"/><path d="M140 58h8" stroke="#0009" stroke-width="2"/>`},
+20:{w:[82,240,18,5,"#b98a4a"],n:300,ny:68,s:[256,58],
+b:"M20 86L20 56Q20 50 30 49L72 47L106 32Q114 28 130 28L172 28Q186 29 196 36L226 52L282 58Q298 61 300 72L300 86Z",
+g:"M98 50L114 34L130 31L172 31Q184 32 191 39L208 51Z",
+x:K=>`${mir(208,52,K)}<path d="M130 28L172 28Q184 29 190 33L128 33Z" fill="#14161a"/><path d="M150 31V51" stroke="#0b0d10" stroke-width="2.2"/><path d="M20 49L52 47" stroke="#111" stroke-width="3"/><rect x="284" y="64" width="9" height="12" rx="3" fill="#111" stroke="#cfd5dc"/><rect x="294" y="65" width="6" height="11" rx="3" fill="#111" stroke="#cfd5dc"/><path d="M262 59L294 64L293 68L261 63Z" fill="#eef7ff"/><path d="M262 60L293 65" stroke="#7fd4ff"/><path d="M20 52H36V58H20Z" fill="#d01a2c"/><circle cx="26" cy="85" r="2.4" fill="#222" stroke="#aab"/><circle cx="33" cy="85" r="2.4" fill="#222" stroke="#aab"/><path d="M200 66h10v6h-10z" fill="#0b0d10"/><path d="M126 52V80M180 54V80" stroke="#0008" fill="none"/><path d="M140 58h8" stroke="#0009" stroke-width="2"/><path d="M262 84H300V86H262z" fill="#0b0d10"/>`},
+21:{w:[82,242,18,5],n:302,ny:68,s:[252,58],
+b:"M18 86L18 56Q18 50 28 49L70 47L104 32Q114 28 132 28L176 28Q192 29 202 38L230 54L286 60Q300 62 302 72L302 86Z",
+g:"M96 50L112 35L134 31L176 31Q190 32 198 40L214 53L92 51Z",
+x:K=>`${mir(210,54,K)}<path d="M132 28L176 28Q192 29 202 38L126 38Z" fill="#14161a"/><path d="M238 56h28l-4-5h-20z" fill="#0b0d10"/><path d="M66 71H286" stroke="#111" stroke-width="3" opacity=".7"/><path d="M18 52H27V58H18Z" fill="#ff1f33"/><path d="M288 66H302V80H288Z" fill="#0b0d10"/>${slats(290,66,11,14,2)}<path d="M268 58L298 62L297 67L267 63Z" fill="#fff3d6"/><path d="M268 59H298" stroke="#ff7a1a"/><ellipse cx="22" cy="84" rx="4" ry="2.6" fill="#222" stroke="#aab"/><path d="M124 52V80M184 53V80" stroke="#0008" fill="none"/><path d="M142 58h8" stroke="#0009" stroke-width="2"/><path d="M262 84H302V86H262z" fill="#0b0d10"/>`},
+23:{w:[80,244,18,5],n:302,ny:70,s:[256,60],
+b:"M22 86L22 58Q22 52 34 51L74 50Q100 48 126 34Q140 28 168 29Q188 31 204 44L232 56L284 60Q300 63 302 74L302 86Z",
+g:"M92 50Q112 40 130 34Q146 30 168 32Q186 34 198 46L206 53L88 52Z",
+x:K=>`${mir(214,55,K)}<path d="M92 50Q112 40 130 34Q146 30 168 32Q186 34 198 46L206 53L88 52Z" fill="none" stroke="#d6dbe1" stroke-width="1.4"/><path d="M30 56L292 62" stroke="#e8edf2" stroke-opacity=".6" fill="none"/><rect x="288" y="62" width="14" height="18" rx="2" fill="#15171b" stroke="#d6dbe1"/><path d="M291 62V80M294 62V80M297 62V80M300 62V80" stroke="#aeb5bd" stroke-width=".7"/><circle cx="276" cy="62" r="5.5" fill="#f4f8ff" stroke="#bfc6cf"/><circle cx="276" cy="62" r="2.5" fill="#9fb8d0"/><circle cx="263" cy="60" r="4" fill="#f4f8ff" stroke="#bfc6cf"/><ellipse cx="25" cy="58" rx="3" ry="5" fill="#c4172a"/><path d="M214 66h12v5h-12z" fill="#0b0d10"/><ellipse cx="30" cy="84" rx="4" ry="2.4" fill="#222" stroke="#aab"/><ellipse cx="40" cy="84" rx="4" ry="2.4" fill="#222" stroke="#aab"/><path d="M128 53V80M180 55V80" stroke="#0008" fill="none"/><path d="M142 59h9" stroke="#0009" stroke-width="2"/>`},
+18:{w:[80,238,17,5],n:300,ny:72,s:[250,62],
+b:"M24 86L24 62Q26 56 40 55L70 54Q92 52 108 40Q122 32 146 31Q172 31 190 42L228 58Q268 62 286 70Q300 74 300 82L300 86Z",
+g:"M90 56Q96 44 114 38Q146 33 168 35Q184 38 196 48L204 56Z",
+x:K=>`${mir(204,54,K)}<path d="M18 50H52V54H18z" fill="${K}" stroke="#0009"/><path d="M28 54V60M44 54V60" stroke="#0d0f13" stroke-width="3"/><rect x="262" y="55" width="14" height="8" rx="4" fill="#f4f8ff" stroke="#999"/><path d="M240 61H262" stroke="#0007" stroke-width="3"/><circle cx="28" cy="65" r="3.4" fill="#ff2d3d"/><circle cx="28" cy="72" r="3.4" fill="#ff2d3d"/><path d="M276 73H300V83H276Z" fill="#0b0d10"/><path d="M206 66h12v5h-12z" fill="#0b0d10"/><path d="M122 56V80" stroke="#0008" fill="none"/><path d="M136 62h8" stroke="#0009" stroke-width="2"/>`},
+10:{w:[82,238,17,5,"#d8b13a"],n:298,ny:68,s:[250,58],
+b:"M22 86L22 56Q22 50 32 49L72 47L104 32Q112 28 130 28L170 28Q184 29 194 36L224 52L280 58Q296 61 298 72L298 86Z",
+g:"M96 50L112 35L132 31L170 31Q182 32 190 39L206 51Z",
+x:K=>`${mir(206,52,K)}<path d="M14 36H56V41H14z" fill="${K}" stroke="#0009"/><path d="M24 41V50M46 41V50" stroke="#0d0f13" stroke-width="3"/><path d="M236 54h26l-4-8h-18z" fill="#0b0d10"/><path d="M262 58L292 63L291 68L261 63Z" fill="#eaf4ff"/><path d="M276 73H298V83H276Z" fill="#0b0d10"/>${slats(278,73,19,10,2)}<path d="M22 52H34V58H22Z" fill="#c4172a"/><ellipse cx="26" cy="84" rx="4" ry="2.4" fill="#222" stroke="#aab"/><path d="M124 52V80M180 52V80" stroke="#0008" fill="none"/><path d="M140 58h8" stroke="#0009" stroke-width="2"/>`}
+});
+const lamp=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="2" fill="#f3f6f9" stroke="#9aa"/><path d="M${x+2} ${y+h/2}H${x+w-2}" stroke="#ffe9a8" stroke-width="1"/>`;
+const tail=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="1.5" fill="#d11c2a" stroke="#7a0f18" stroke-width=".6"/>`;
+const bump=(x,y,w)=>`<rect x="${x}" y="${y}" width="${w}" height="5" rx="2.5" fill="#dfe4ea" stroke="#6f767f"/>`;
+Object.assign(ART,{
+2:{by:84,w:[80,240,16,5,"#9aa3ad"],n:297,ny:62,s:[250,54],
+b:"M24 84L24 56Q24 52 30 52L66 52L86 30Q90 26 98 26L184 26Q194 26 200 33L220 52L284 56Q295 57 297 64L297 84Z",
+g:"M70 50L88 32H136V50ZM142 32H182Q190 32 194 38L210 50H142Z",
+x:K=>`${mir(202,48,K)}${lamp(280,57,14,9)}<path d="M286 68H297V75H286z" fill="#222" stroke="#cfd5dc"/>${tail(24,57,6,9)}${bump(282,77,18)}${bump(18,77,18)}<path d="M100 50V80M142 50V80" stroke="#0008" fill="none"/><path d="M112 58h8M154 58h8" stroke="#0009" stroke-width="2"/><path d="M40 68H280" stroke="#fff" stroke-opacity=".5"/>`},
+3:{by:84,w:[80,240,17,5,"#aeb6c0"],n:298,ny:66,s:[250,56],
+b:"M22 84L22 54Q22 50 30 50L74 48L92 30Q98 26 108 26L172 26Q184 27 192 34L222 50L282 56Q296 58 298 66L298 84Z",
+g:"M78 46L94 32H134V46ZM140 32H172Q182 33 188 38L208 48H140Z",
+x:K=>`${mir(204,48,K)}${lamp(268,57,20,9)}<path d="M288 64H298V76H288z" fill="#1a1c20" stroke="#d6dbe1"/><circle cx="293" cy="70" r="3" fill="none" stroke="#d6dbe1"/>${tail(22,52,8,10)}<path d="M30 77H290" stroke="#222" stroke-width="4"/><path d="M96 48V78M138 48V78M186 50V78" stroke="#0008" fill="none"/><path d="M108 56h8M150 56h8" stroke="#0009" stroke-width="2"/>`},
+7:{by:84,w:[80,240,17,5],n:298,ny:68,s:[252,58],
+b:"M22 84L22 58Q22 52 32 51L72 48L104 32Q112 28 126 28L176 28Q190 29 198 36L226 52L282 58Q296 61 298 70L298 84Z",
+g:"M96 48L112 34L134 31H176Q188 32 194 38L210 50H90Z",
+x:K=>`${mir(206,52,K)}<path d="M154 31V50" stroke="#0b0d10" stroke-width="2.2"/><path d="M262 60L292 66L291 70L261 65Z" fill="#eaf4ff"/><path d="M280 70H298V80H280z" fill="#111" stroke="#cfd5dc"/><path d="M282 71L296 79M296 71L282 79" stroke="#cfd5dc" stroke-width=".9"/>${tail(22,54,7,8)}<path d="M126 52V80M182 52V80" stroke="#0008" fill="none"/><path d="M138 58h8M166 58h8" stroke="#0009" stroke-width="2"/><path d="M30 62L284 66" stroke="#fff" stroke-opacity=".3" fill="none"/>`},
+15:{by:84,w:[82,238,17,5],n:296,ny:64,s:[248,56],
+b:"M24 84L24 58Q24 52 34 51L66 50L98 30Q106 26 120 26L168 26Q180 27 188 34L216 50L270 54Q290 56 296 66L296 84Z",
+g:"M72 48L100 32L120 29H168Q178 30 184 36L204 48Z",
+x:K=>`${mir(204,48,K)}<path d="M20 48H42" stroke="#111" stroke-width="3"/><rect x="270" y="55" width="22" height="9" fill="#eef2f6" stroke="#888"/><rect x="286" y="66" width="10" height="8" fill="#222" stroke="#cfd5dc"/><path d="M262 76H296V84H262z" fill="#1a1c20"/><path d="M24 70H296" stroke="#c4172a" stroke-width="2" opacity=".7"/>${tail(24,54,6,8)}<path d="M120 48V80M170 50V80" stroke="#0008" fill="none"/><path d="M134 56h8" stroke="#0009" stroke-width="2"/>`},
+17:{by:84,w:[84,240,17,5],n:298,ny:66,s:[250,58],
+b:"M26 84L26 56Q26 50 36 49L52 48L76 30Q84 26 96 26L168 26Q182 27 190 34L220 50L282 56Q296 58 298 68L298 84Z",
+g:"M60 46L78 32L96 29H168Q178 30 184 36L204 48Z",
+x:K=>`${mir(206,48,K)}<path d="M16 34H66V39H16z" fill="#111"/><path d="M26 39V48M56 39V48" stroke="#111" stroke-width="3"/><path d="M40 80H282" stroke="#d6283a" stroke-width="2"/><path d="M262 56L292 62L291 66L261 61Z" fill="#eaf4ff"/><path d="M278 67H298V80H278z" fill="#111"/><path d="M280 72H298" stroke="#d6283a"/><path d="M238 56H262" stroke="#0007" stroke-width="3"/>${tail(26,52,6,8)}<ellipse cx="30" cy="82" rx="4" ry="2.5" fill="#222" stroke="#aab"/><path d="M128 50V80M176 50V80" stroke="#0008" fill="none"/>`},
+5:{by:80,w:[76,244,20,6],n:300,ny:56,s:[262,48],
+b:"M24 80L24 38Q24 30 32 28L88 24H184Q196 24 204 32L226 48L284 52Q298 54 300 62L300 80Z",
+g:"M34 32L48 30H108V48H34ZM114 30H178L196 34L210 48H114Z",
+x:K=>`${mir(214,46,K)}<path d="M44 22H190" stroke="#14161a" stroke-width="3"/><rect x="284" y="58" width="16" height="12" rx="2" fill="#17191d" stroke="#d6dbe1"/>${slats(286,58,13,12,3)}<path d="M268 52L296 56L295 62L267 58Z" fill="#eaf4ff"/><path d="M96 80H226" stroke="#222" stroke-width="3"/>${tail(23,44,5,12)}<path d="M111 48V76M168 48V76" stroke="#0008" fill="none"/><path d="M122 54h8M178 54h8" stroke="#0009" stroke-width="2"/><path d="M286 72H300V80H286z" fill="#0b0d10"/>`},
+14:{by:81,w:[84,232,19,5],n:286,ny:62,s:[244,52],
+b:"M34 81L34 40Q34 34 40 33L74 32L96 28H182Q192 28 198 36L214 52L270 56Q284 58 286 66L286 81Z",
+g:"M42 38L52 33H110V50H42ZM116 33H178Q186 33 190 40L202 50H116Z",
+x:K=>`${mir(198,48,K)}<path d="M60 26H180" stroke="#14161a" stroke-width="3"/>${lamp(266,58,14,9)}<path d="M262 74H286V81H262z" fill="#1a1c20"/>${tail(34,50,5,12)}<path d="M112 50V76" stroke="#0008" fill="none"/><path d="M122 56h8" stroke="#0009" stroke-width="2"/><path d="M40 68H262" stroke="#fff" stroke-opacity=".3"/>`},
+19:{by:84,w:[80,240,17,5],n:298,ny:66,s:[250,56],
+b:"M22 84L22 56Q22 50 30 50L76 48L90 30Q96 26 106 26H184Q196 26 202 34L226 50L282 54Q296 56 298 66L298 84Z",
+g:"M80 46L94 32H138V46ZM144 32H182Q192 32 196 38L212 46H144Z",
+x:K=>`${mir(206,48,K)}<rect x="268" y="56" width="20" height="10" rx="2" fill="#f4f6f9" stroke="#999"/><rect x="284" y="68" width="14" height="9" fill="#1a1c20" stroke="#cfd5dc"/><path d="M286 76L296 69" stroke="#cfd5dc"/>${tail(22,50,7,14)}<path d="M18 76H300" stroke="#222" stroke-width="5" opacity=".8"/><path d="M96 46V80M141 46V80M190 48V80" stroke="#0008" fill="none"/><path d="M108 54h8M150 54h8" stroke="#0009" stroke-width="2"/>`},
+22:{by:84,w:[80,240,17,5],n:299,ny:68,s:[252,58],
+b:"M22 84L22 58Q22 52 32 51L70 49L98 32Q106 28 120 28H178Q192 29 200 36L226 52L284 58Q297 61 299 70L299 84Z",
+g:"M92 48L108 34L130 31H178Q190 32 196 38L212 50H86Z",
+x:K=>`${mir(208,52,K)}<path d="M152 31V50" stroke="#0b0d10" stroke-width="2.2"/><path d="M262 60L292 66L291 71L261 66Z" fill="#eef2f6"/><path d="M284 70H299V80H284z" fill="#111" stroke="#cfd5dc"/><path d="M291 72l4 4-4 4-4-4z" fill="#d6dbe1"/>${tail(22,54,7,9)}<path d="M120 52V80M184 52V80" stroke="#0008" fill="none"/><path d="M134 58h8M164 58h8" stroke="#0009" stroke-width="2"/><path d="M30 76H290" stroke="#222" stroke-width="3" opacity=".6"/>`}
+});
+const SIG={1:"k",20:"k",5:"eu",11:"eu",14:"eu",12:"y",16:"y",23:"g"};
+function svg(c,o={}){return ART[c.id]?art(c,o):svg0(c,o)}
+function svg0(c,o={}){
+  const [T,N,dr,rx,rr,rf,wx,hy,ry,r,f0]=c.g,f=f0+(SIG[c.id]||""),F=s=>f.includes(s),bot=86,lift=F("x")?8:0,belt=Math.min(dr,hy)-4;
+  const smooth=!F("b");
+  const body=`M${T} ${bot}L${T} ${dr+4}Q${T} ${dr} ${T+6} ${dr}L${rx} ${dr}${smooth?`Q${rx+(rr-rx)*.4} ${ry+(dr-ry)*.3} ${rr} ${ry}`:`L${rr} ${ry}`}L${rf} ${ry}${smooth?`Q${rf+(wx-rf)*.6} ${ry+(hy-ry)*.3} ${wx} ${hy}`:`L${wx} ${hy}`}L${N-14} ${hy+1}Q${N} ${hy+4} ${N} ${hy+14}L${N} ${bot}Z`;
+  const wh=x=>{const y=100-r;return`<circle cx="${x}" cy="${y}" r="${r+5}" fill="#04060a"/><circle cx="${x}" cy="${y}" r="${r}" fill="#101216" stroke="#2b2f36" stroke-width="2"/><g class="spin" style="transform-origin:${x}px ${y}px"><circle cx="${x}" cy="${y}" r="${r*.68}" fill="url(#rm)"/>${[0,72,144,216,288].map(a=>`<line x1="${x}" y1="${y}" x2="${x+Math.cos(a*Math.PI/180)*r*.66}" y2="${y+Math.sin(a*Math.PI/180)*r*.66}" stroke="#1a1d23" stroke-width="2.4"/>`).join("")}</g><circle cx="${x}" cy="${y}" r="3" fill="#0b0d10"/>`};
+  const x1=T+(N-T)*.2,x2=T+(N-T)*.79,pb=(rr+rf)/2;
+  const crack=o.cond<45?`<path d="M${pb-8} ${belt+6}l6 6-4 5 7 8" stroke="#000" stroke-width="1.4" fill="none"/><path d="${body}" fill="#3a2a1a" opacity=".28"/>`:"";
+  const tune=o.tune||{},eng=tune.engine||0,turbo=tune.turbo||0,susp=tune.suspension||0,nos=tune.nitro||0,paint=tune.paint||c.col;
+  const tuneArt=`${eng?`<path d="M${T+12} ${dr+12}L${N-12} ${hy+12}" stroke="#f4f6f8" stroke-width="2" opacity=".85"/>`:""}${eng>=3?`<path d="M${pb-18} ${belt+5}h32l-5 3h-25z" fill="#fff" opacity=".65"/>`:""}${turbo?`<path d="M${N-39} ${hy+3}l22 -2 -3 4 -18 2z" fill="#111820" stroke="#d7e6f2" stroke-width="1"/>`:""}${turbo>=2?`<path d="M${N-42} ${hy-3}l27 -2 2 3 -29 3z" fill="#141a23" stroke="#c9d4df" stroke-width="1.2"/>`:""}${susp?`<path d="M${x1+8} ${bot-1}H${x2-4}" stroke="#111820" stroke-width="4"/>`:""}${susp>=2?`<path d="M${x1} ${bot+2}H${x2}" stroke="#5ee6ff" stroke-width="1.2" opacity=".8"/>`:""}${nos?`<path d="M${N-26} ${hy+12}l8 -4 -3 5 8 -1 -12 7 3 -5 -6 1z" fill="#5ee6ff" opacity=".85"/>`:""}`;
+  return`<svg class="income-motion" viewBox="0 0 320 112" role="img" aria-label="${c.n}"><ellipse cx="160" cy="101" rx="150" ry="8" fill="url(#sd)"/>
+${F("r")||F("p")?"":`<path d="M${N-2} ${hy+4}L${N+22} ${hy-6}L${N+22} ${hy+22}Z" fill="url(#bm)" class="hl"/>`}
+${wh(x1)}${wh(x2)}
+<g transform="translate(0,${-lift})"><defs><clipPath id="genericTuneClip${c.id}"><path d="${body}"/></clipPath></defs>
+${F("w")?`<path d="M${T+2} ${dr-12}h30v3h-30z" fill="#0d0f13"/><path d="M${T+8} ${dr-9}v9M${T+26} ${dr-9}v9" stroke="#0d0f13" stroke-width="2"/>`:""}
+<path d="${body}" fill="${o.cond<30?"#6b727c":paint}" stroke="#0009" stroke-width="1.3" stroke-linejoin="round"/><path d="${body}" fill="url(#sh)"/><g clip-path="url(#genericTuneClip${c.id})">${tuneArt}</g>
+<path d="M${rx+5} ${belt}L${rr+2} ${ry+5}L${rf-1} ${ry+5}L${wx-9} ${belt}Z" fill="url(#gl)" stroke="#0008" stroke-width="1"/>
+<path d="M${pb} ${ry+5}V${belt}M${pb} ${belt+4}V${bot-8}M${T+4} ${belt+6}H${N-4}" stroke="#0007" stroke-width="1" fill="none"/><rect x="${pb+5}" y="${belt+7}" width="7" height="2" rx="1" fill="#0009"/>
+${F("s")?`<path d="M${T+8} ${dr+10}L${N-8} ${hy+10}" stroke="#fff" stroke-opacity=".65" stroke-width="3"/>`:""}
+${F("h")?`<path d="M${wx+8} ${hy}h22l-4-5h-14z" fill="#0b0e13"/>`:""}
+${F("r")?`<circle cx="${N-10}" cy="${hy+8}" r="5" fill="#fff"/><circle cx="${N-10}" cy="${hy+8}" r="5" fill="none" stroke="#9aa" class="hl"/>`:F("p")?`<rect x="${N-24}" y="${hy-3}" width="10" height="5" rx="2" fill="#dfe6ee"/>`:`<path d="M${N-20} ${hy+3}L${N-3} ${hy+6}V${hy+11}L${N-22} ${hy+8}Z" fill="#fff" class="hl"/>`}
+<rect x="${T-1}" y="${dr+3}" width="4" height="7" rx="1" fill="#ff2d3d"/><path d="M${wx-12} ${belt+1}l-9 1v5h9z" fill="${c.col}" stroke="#0008"/><path d="M${T+6} ${belt+2}H${N-14}" stroke="#fff" stroke-opacity=".28"/>${F("k")?`<rect x="${N-12}" y="${hy+7}" width="5" height="7" rx="2" fill="#0b0d10"/><rect x="${N-19}" y="${hy+6}" width="5" height="7" rx="2" fill="#0b0d10"/>`:""}${F("g")?`<rect x="${N-11}" y="${hy+8}" width="10" height="11" rx="2" fill="#15171b" stroke="#cfd5dc"/><path d="M${N-8} ${hy+8}v11M${N-5} ${hy+8}v11" stroke="#cfd5dc" stroke-width=".8"/>`:""}${F("y")?`<path d="M${N-26} ${hy+3}l22 5-2 3-20-4z" fill="#eaf7ff"/>`:""}${F("e")?`<circle cx="${T-1}" cy="${dr+14}" r="9" fill="#111" stroke="#3a3f48" stroke-width="2"/>`:""}${F("u")?`<path d="M${rr+8} ${ry-3}H${rf-8}" stroke="#1a1c20" stroke-width="3"/>`:""}${F("p")?`<path d="M${rr} ${ry}H${rf}V${ry+5}H${rr}Z" fill="#111"/><path d="M${wx} ${hy}L${N-14} ${hy+1}V${hy+6}L${wx} ${hy+5}Z" fill="#111"/>`:""}<rect x="${N-4}" y="${bot-6}" width="4" height="4" fill="#ffd45c"/>${crack}
+${o.broken?`<g class="smk"><circle cx="${wx+10}" cy="${hy-2}" r="6"/><circle cx="${wx+16}" cy="${hy-2}" r="6"/><circle cx="${wx+4}" cy="${hy-2}" r="6"/></g>`:""}
+</g></svg>`;
+}
+/* ===== Экраны ===== */
+function card(o,m,i){
+  const c=byId(o.id),k=rar(c),v=m==="mk"?o.price:sellP(o);
+  const btn=m==="mk"?`<div class="two"><button class="btn s" onclick="showCarInfo(${o.id},${o.cond},${o.uid||0})">ДОСЬЕ</button><button class="btn" onclick="buy(${i})">КУПИТЬ</button></div>`:m==="own"?`<div class="two"><button class="btn s" onclick="showCarInfo(${o.id},${o.cond},${o.uid})">ДОСЬЕ</button><button class="btn" onclick="sell(${o.uid})">ПРОДАТЬ</button></div>`:"";
+  return`<article class="card" style="--rc:${k.color}"><div class="stage">${svg(c,o)}<span class="gr" style="background:${k.color}">${"DCBAS"[k.i]}</span></div><div class="row"><b>${c.n}</b><span class="tag">${c.kind}</span></div><div class="mu">${c.hp} л.с. · состояние ${o.cond}%${o.broken?' · <b class="bad">СЛОМАНА</b>':""}</div><div class="bar"><i style="width:${o.cond}%;background:${o.cond>60?"var(--gr)":o.cond>35?"var(--gold)":"var(--rd)"}"></i></div><div class="row"><span class="price">${fmt(v)}</span>${m==="mk"&&o.mk<.95?'<span class="deal">ВЫГОДНО</span>':m==="own"?`<small>доход ${fmt(carIncomeHour(o))}/ч · ${fmtSec(carIncomeHour(o)/3600)}/с</small>`:""}</div>${btn}</article>`;
+}
+const CAR_LORE={
+ "СПОРТ":"Создана для точного управления, быстрых ускорений и уверенного поведения на асфальте.",
+ "ЭЛИТА":"Высокопроизводительная машина с дорогими компонентами, высокой стоимостью владения и сильным потенциалом пассивного дохода.",
+ "КЛАССИКА":"Автомобиль с характером и историей. Отличная база для рестомода, ретро-стайлинга и аккуратной модернизации.",
+ "ВНЕДОРОЖНИК":"Высокий клиренс, массивный кузов и внедорожный характер. Особенно хорошо смотрится с усиленной подвеской и экспедиционными деталями.",
+ "КОМФОРТ":"Практичный автомобиль для повседневной езды. Умеренная стоимость и сбалансированная основа для спокойного проекта."
+};
+function showCarInfo(id,cond=100,uid=0){
+ const c=byId(id);if(!c)return;const owned=state.owned.find(x=>x.uid===+uid),o=owned||{id:c.id,cond:Math.max(5,Math.min(100,+cond||c.cond)),broken:false,tune:{}};const t=o.tune||{};
+ const hp=Math.round(c.hp*(1+(t.engine||0)*.08+(t.turbo||0)*.15));
+ const hourly=o.broken?0:Math.round(Math.round(c.price*o.cond/100)*rate(c));
+ const old=document.getElementById('carInfoModal');if(old)old.remove();
+ const modal=document.createElement('div');modal.id='carInfoModal';modal.className='car-modal';modal.innerHTML=`<div class="car-modal-backdrop" onclick="document.getElementById('carInfoModal')?.remove()"></div><section class="car-modal-panel" role="dialog" aria-modal="true" aria-label="Досье ${c.n}"><button class="modal-close" onclick="document.getElementById('carInfoModal')?.remove()" aria-label="Закрыть">✕</button><div class="brand">AVANTGARDE VEHICLE ARCHIVE · #${String(c.id).padStart(3,'0')}</div><div class="stage modal-car" style="--rc:${t.paint||c.col}">${svg(c,o)}</div><h2>${c.n}</h2><div class="row"><span class="tag">${c.kind}</span><span class="price">${fmt(c.price)}</span></div><p class="mu">${CAR_LORE[c.kind]||'Уникальная машина коллекции AVANTGARDE.'}</p><div class="stats"><div class="stat"><b>${hp}</b><span>Л.С.</span></div><div class="stat"><b>${o.cond}%</b><span>СОСТОЯНИЕ</span></div><div class="stat"><b>${fmt(hourly)}</b><span>ДОХОД / Ч</span></div></div><div class="car-specs"><div><span>Класс</span><b>${c.kind}</b></div><div><span>Мощность с тюнингом</span><b>${hp} л.с.</b></div><div><span>Потенциал дохода</span><b>${fmtSec(hourly/3600)} / сек</b></div><div><span>Установлено улучшений</span><b>${(t.engine||0)+(t.turbo||0)+(t.suspension||0)+(t.nitro||0)}</b></div></div>${owned?`<button class="btn" onclick="document.getElementById('carInfoModal')?.remove();tab='tuning';render();setTimeout(()=>{const e=document.getElementById('selTune');if(e){e.value='${owned.uid}';drawTune()}},20)">ОТКРЫТЬ В ТЮНИНГЕ</button>`:''}</section>`;document.body.appendChild(modal);sfx('click');
+}
+function refreshMarket(force){
+  const m=state.market;
+  if(!force&&m&&Date.now()-m.t<300000&&m.list.length)return;
+  const ids=CARS.map(c=>c.id).sort(()=>Math.random()-.5).slice(0,8);
+  state.market={t:Date.now(),list:ids.map(id=>{const c=byId(id),cond=Math.max(30,Math.min(98,c.cond+RI(-22,14))),mk=.88+Math.random()*.32;return{id,cond,mk,price:Math.round(c.price*cond/100*mk)}})};
+}
+function pickCase(b){let t=b.w.reduce((a,c)=>a+c,0),x=Math.random()*t;for(let i=0;i<b.ids.length;i++){x-=b.w[i];if(x<0)return byId(b.ids[i])}return byId(b.ids[0])}
+// Окуп/слив считается по реальной цене продажи выпавшей машины минус цена кейса.
+const cdLeft=k=>Math.max(0,Math.ceil(((state.cd[k]||0)-Date.now())/1000));
+const carSel=id=>`<select id="${id}" onchange="previewCarSelection('${id}')">${state.owned.map(o=>`<option value="${o.uid}" ${o.broken?"disabled":""}>${byId(o.id).n} · ${o.cond}%${o.broken?" (сломана)":""}</option>`).join("")}</select>`;
+function previewCarSelection(id){const sel=$("#"+id),box=$("#miniCarPreview");if(!sel||!box)return;const o=state.owned.find(x=>x.uid===+sel.value);if(o)box.innerHTML=svg(byId(o.id),o)}
+function render(){
+  head();dr.st=0;clearTimeout(dr.t);tn=null;
+  const T={garage:"Гараж",market:"Рынок",cases:"Кейсы",play:"Игры",shop:"Сервис",tuning:"Тюнинг",me:"Профиль"};$("#hd").textContent=T[tab];
+  const s=$("#scr");
+  if(tab==="garage"){
+    s.innerHTML=`<div class="card"><div class="brand">ПАССИВНЫЙ ДОХОД</div><h2 style="font-size:24px;margin:8px 0">${fmt(perHour())} / час</h2><div class="row"><small>В секунду</small><b>${fmtSec(perSecond())}/с</b></div><div class="row"><small>Накоплено (максимум 4 часа)</small><b id="inc">${fmt(ready())}</b></div><div class="bar"><i style="width:${Math.min(100,(Date.now()-state.last)/CAP*100)}%;background:var(--cy)"></i></div><small>Сломанные машины не приносят дохода. При каждом сборе машины изнашиваются и могут сломаться.</small><button class="btn" onclick="collect()">СОБРАТЬ ДОХОД</button></div>
+    <div class="grid cars">${state.owned.map(o=>card(o,"own")).join("")}${Array.from({length:MAX-state.owned.length},()=>`<div class="slot" onclick="tab='market';render()">+ Свободное место</div>`).join("")}</div>${state.owned.length?"":'<div class="card mu" style="text-align:center">Гараж пуст. Купи машину на рынке или открой кейс.</div>'}`;
+  }else if(tab==="market"){
+    refreshMarket(false);const left=Math.max(0,300-Math.floor((Date.now()-state.market.t)/1000));
+    s.innerHTML=`<div class="row"><h2>В ПРОДАЖЕ</h2><small>обновление через ${Math.floor(left/60)}:${String(left%60).padStart(2,"0")}</small></div><p class="mu">Цена зависит от состояния и наценки дилера. Ищи машины с пометкой «ВЫГОДНО» — их можно перепродать дороже.</p><div class="grid cars">${state.market.list.map((o,i)=>card(o,"mk",i)).join("")}</div><button class="btn s" onclick="if(state.money<5000)return toast('Нужно 5 000 ₽');state.money-=5000;refreshMarket(true);save()">ОБНОВИТЬ СПИСОК · 5 000 ₽</button>`;
+  }else if(tab==="cases"){
+    s.innerHTML=`<p class="mu">У каждого кейса есть шанс на денежный результат: чаще небольшой минус или плюс, редко — огромный выигрыш или крупный слив. Все шансы условные и рассчитаны для игровой валюты.</p><div class="grid">${CASES.map(b=>`<div class="card"><div class="row"><div><b style="font-size:16px">${b.ic} ${b.n}</b><br><small>${b.d}</small></div><span class="price">${fmt(b.price)}</span></div><details><summary>Шансы выпадения</summary>${b.ids.map((id,i)=>{const c=byId(id),t=b.w.reduce((a,x)=>a+x,0);return`<div class="od"><span style="color:${rar(c).color}">${c.n}</span><b>${(b.w[i]/t*100).toFixed(1)}%</b></div>`}).join("")}</details><button class="btn" onclick="openCase('${b.id}')">ОТКРЫТЬ</button></div>`).join("")}</div>`;
+  }else if(tab==="play"){
+    if(!state.owned.length){s.innerHTML='<div class="card mu" style="text-align:center">Для мини-игр нужна машина.</div>';return}
+    s.innerHTML=`<div class="card"><div class="brand">ACTIVE BUILD</div><h2>МАШИНА ДЛЯ ЗАЕЗДОВ</h2>${carSel("selPreview")}<div id="miniCarPreview" class="stage" style="margin:10px 0 0;border:1px solid var(--ln);border-radius:14px">${svg(byId(state.owned[0].id),state.owned[0])}</div><small>Текущая сборка показывает установленный тюнинг. Выбор автомобиля в любой мини-игре обновит этот предпросмотр.</small></div><div class="card"><h2>🏁 ДРЭГ-СТАРТ</h2><p class="mu">Жми «ГАЗ» сразу после зелёного. Чем быстрее реакция и мощнее машина — тем больше награда. Фальстарт и износ двигателя могут привести к поломке.</p>${carSel("selD")}<div class="lights" id="lights"><i></i><i></i><i></i></div><div class="trk" id="trk"><div class="c">${svg(CARS[0],{cond:100}).replace(/<svg /,'<svg style="width:90px" ')}</div></div><button class="btn" id="dgBtn" onclick="drag()">${cdLeft("drag")?"КД · "+cdLeft("drag")+" с":"СТАРТ"}</button></div>
+    <div class="card"><h2>🔧 ТОНИНГ-НАСТРОЙКА</h2><p class="mu">Останови стрелку в зелёной зоне. 3 раунда, каждый следующий быстрее и точнее.</p>${carSel("selT")}<div class="tb"><div id="zone"></div><div id="needle" style="left:0"></div></div><small id="tnInfo">Раунд 1/3</small><button class="btn" id="tnBtn" onclick="tune()">${cdLeft("tune")?"КД · "+cdLeft("tune")+" с":"НАЧАТЬ"}</button></div>
+    <div class="card"><div class="row"><h2>🅿️ ТОЧНАЯ ПАРКОВКА</h2><span class="tag">НОВАЯ ИГРА</span></div><p class="mu">Останови машину внутри зелёного парковочного сектора. Чем ближе к центру, тем больше награда. Улучшенная подвеска расширяет зону.</p>${carSel("selPark")}<div class="mini-arena"><div class="mini-score" id="parkInfo">ГОТОВ К ЗАЕЗДУ</div><div class="mini-track"><div class="mini-target" id="parkTarget" style="left:65%;width:14%"></div><div class="mini-needle" id="parkNeedle"></div></div><button class="btn" id="parkBtn" onclick="parkingGame()">${cdLeft("park")?"КД · "+cdLeft("park")+" с":"НАЧАТЬ ПАРКОВКУ"}</button></div></div>
+    <div class="card"><div class="row"><h2>⚙️ ПЕРЕКЛЮЧЕНИЕ ПЕРЕДАЧ</h2><span class="tag">НОВАЯ ИГРА</span></div><p class="mu">Поймай зелёную зону на тахометре, чтобы переключить передачу. 4 передачи, скорость растёт с каждой.</p>${carSel("selGear")}<div class="mini-arena"><div class="mini-score" id="gearInfo">4 ПЕРЕДАЧИ · ГОТОВ?</div><div class="mini-track"><div class="mini-target" id="gearTarget" style="left:55%;width:18%"></div><div class="mini-needle" id="gearNeedle"></div></div><button class="btn" id="gearBtn" onclick="gearGame()">${cdLeft("gear")?"КД · "+cdLeft("gear")+" с":"ЗАПУСТИТЬ ДВИГАТЕЛЬ"}</button></div></div>
+    <div class="card"><div class="row"><h2>🚧 ГОРОДСКОЙ СЛАЛОМ</h2><span class="tag">НОВАЯ ИГРА</span></div><p class="mu">Следуй указанию и уворачивайся от препятствий. Успех зависит от реакции и уровня подвески. 5 ворот за заезд.</p>${carSel("selSlalom")}<div class="mini-arena"><div class="mini-score" id="slalomInfo">5 ВОРОТ · ГОТОВ?</div><div class="row" style="margin:12px 0"><div style="font-size:36px;flex:1;text-align:center" id="slalomArrow">↔️</div><div style="flex:2"><small>НАПРАВЛЕНИЕ ПОВОРОТА</small><h2 id="slalomPrompt">Нажми старт</h2></div></div><div class="two"><button class="btn s" onclick="slalomMove('left')">⬅ ВЛЕВО</button><button class="btn s" onclick="slalomMove('right')">ВПРАВО ➡</button></div><button class="btn" id="slalomBtn" onclick="slalomGame()">${cdLeft("slalom")?"КД · "+cdLeft("slalom")+" с":"СТАРТ СЛАЛОМА"}</button></div></div>
+    <div class="card"><div class="row"><h2>🚦 СВЕТОФОР: РЕАКЦИЯ</h2><span class="tag">ВЫСОКАЯ СЛОЖНОСТЬ</span></div><p class="mu">Нажми только после зелёного сигнала. Фальстарт повреждает машину; 3 попытки, окно идеальной реакции — менее 240 мс.</p>${carSel("selLight")}<div class="mini-arena"><div class="lights" id="lightGameLamps"><i></i><i></i><i></i></div><div class="mini-score" id="lightInfo">ГОТОВ?</div><button class="btn" id="lightBtn" onclick="lightGame()">${cdLeft("light")?"КД · "+cdLeft("light")+" с":"НАЧАТЬ ЗАЕЗД"}</button></div></div>
+    <div class="card"><div class="row"><h2>🧠 ПАМЯТЬ ПИЛОТА</h2><span class="tag">КОМБО</span></div><p class="mu">Запомни и повтори последовательность поворотов. Каждый раунд добавляет направление, а сигналы ускоряются. Ошибка завершает попытку.</p>${carSel("selMemory")}<div class="mini-arena"><div class="mini-score" id="memoryInfo">5 РАУНДОВ · ГОТОВ?</div><div class="two"><button class="btn s" onclick="memoryInput('left')">⬅ ВЛЕВО</button><button class="btn s" onclick="memoryInput('right')">ВПРАВО ➡</button></div><button class="btn" id="memoryBtn" onclick="memoryGame()">${cdLeft("memory")?"КД · "+cdLeft("memory")+" с":"НАЧАТЬ ТРЕНИРОВКУ"}</button></div></div>`;
+  }else if(tab==="shop"){
+    s.innerHTML=`<p class="mu">Обслуживание повышает состояние и стоимость машины. Поломанную машину нужно чинить — она не приносит доход и стоит дешевле.</p>${state.owned.map(o=>{const c=byId(o.id),pts=Math.min(15,100-o.cond),tc=Math.round(c.price*.006*pts),rc=Math.round(c.price*.03);return`<div class="card"><div class="row"><b>${c.n}</b><b class="${o.broken?"bad":""}">${o.broken?"СЛОМАНА":o.cond+"%"}</b></div><div class="bar"><i style="width:${o.cond}%;background:${o.cond>60?"var(--gr)":o.cond>35?"var(--gold)":"var(--rd)"}"></i></div><div class="two"><button class="btn" ${o.broken?"":"disabled"} onclick="fix(${o.uid})">ЧИНИТЬ · ${fmt(rc)}</button><button class="btn s" ${o.broken||pts<=0?"disabled":""} onclick="service(${o.uid})">ТО +${pts}% · ${fmt(tc)}</button></div></div>`}).join("")||'<div class="card mu">Машин нет.</div>'}`;
+  }else if(tab==="tuning"){
+    if(!state.owned.length){s.innerHTML='<div class="card mu">Сначала купи автомобиль — затем собери собственный проект.</div>';return}
+    s.innerHTML=`<div class="card"><div class="brand">AVANTGARDE PERFORMANCE LAB</div><h2 style="font-size:22px;margin-top:7px">СОБЕРИ СВОЙ ПРОЕКТ</h2><p class="mu">Улучшения сохраняются у каждой машины. Мощность и бонусы влияют на заезды; покраска меняет цвет кузова.</p><label>Автомобиль</label>${carSel("selTune")}<div id="tunePanel"></div></div>`;
+    setTimeout(()=>{const el=$("#selTune");if(el){el.value=String(state.owned[0].uid);el.onchange=drawTune;drawTune()}},0);
+  }else{
+    const t=new Date().toLocaleDateString("sv-SE"),g=state.daily===t;
+    s.innerHTML=`<div class="card"><div class="brand">ДОСЬЕ</div><h2 style="margin-top:8px">АВТОПЕРЕКУП · УРОВЕНЬ ${lvl()}</h2><div class="row"><span>Чистая прибыль</span><b>${fmt(state.profit)}</b></div><div class="row"><span>Кейсов открыто</span><b>${state.opened}</b></div><div class="row"><span>Ремонтов</span><b>${state.repairs}</b></div></div>
+    <div class="card"><h2>ЕЖЕДНЕВНЫЙ БОНУС</h2><button class="btn" ${g?"disabled":""} onclick="daily()">${g?"УЖЕ ПОЛУЧЕНО":"ПОЛУЧИТЬ 20 000 ₽"}</button></div>
+    <div class="card"><h2>ДОХОД АВТОПАРКА</h2><div class="row"><span>В час</span><b class="income-number">${fmt(perHour())}</b></div><div class="row"><span>В секунду</span><b class="income-number">${fmtSec(perSecond())}</b></div><p class="mu">Цена каждой машины влияет на её пассивный доход. Состояние уменьшает доход, а поломка останавливает его.</p></div><div class="card"><h2>МОЙ АВТОПАРК · ТЮНИНГ И ДОХОД</h2>${state.owned.map(o=>`<div class="profile-car part-card"><div class="stage" style="--rc:${o.tune?.paint||byId(o.id).col}">${svg(byId(o.id),o)}</div><div class="row"><b>${byId(o.id).n}</b><span class="tag">${(o.tune?.engine||0)+(o.tune?.turbo||0)+(o.tune?.suspension||0)+(o.tune?.nitro||0)} MODS</span></div><div class="row"><span class="mu">Доход в час</span><b class="income-number">${fmt(carIncomeHour(o))}</b></div><div class="row"><span class="mu">Доход в секунду</span><b class="income-number">${fmtSec(carIncomeHour(o)/3600)}</b></div><button class="btn s" onclick="tab='tuning';render();setTimeout(()=>{const e=document.getElementById('selTune');if(e){e.value='${o.uid}';drawTune()}},20)">НАСТРОИТЬ ЭТУ МАШИНУ</button></div>`).join("")||'<p class="mu">Пока нет машин.</p>'}</div><div class="card"><h2>СОХРАНЕНИЕ ПРОГРЕССА</h2><p class="mu">${TGID?'Профиль Telegram определён. Сохранение привязано к Telegram ID и синхронизируется через Telegram CloudStorage, если он доступен.':'Открой игру через Telegram Mini App, чтобы привязать прогресс к аккаунту и включить облачное сохранение. В обычном браузере используется локальное сохранение.'}</p><div class="tag" style="display:inline-block;margin-top:10px">${TGID?'TELEGRAM · '+String(TGUSER.first_name||'Профиль').replace(/[&<>"']/g,'')+' · CLOUD SAVE':'ЛОКАЛЬНОЕ АВТОСОХРАНЕНИЕ'}</div></div><div class="card"><h2>🎟️ ПРОМОКОДЫ</h2><p class="mu">Введи код и нажми «Активировать». Каждый код можно применить один раз в этом сохранении.</p><div class="two"><input id="promoInput" maxlength="48" autocomplete="off" placeholder="ВВЕДИ ПРОМОКОД" style="min-width:0;width:100%;padding:12px;border-radius:10px;border:1px solid var(--ln);background:#0b0e13;color:var(--tx);font:inherit;text-transform:uppercase"/><button class="btn" style="margin-top:0" onclick="redeemPromo()">АКТИВИРОВАТЬ</button></div><small>Активировано кодов: <b>${(state.redeemedPromo||[]).length}</b></small></div>`;
+  }
+}
+/* ===== ТЮНИНГ / ПРОГРЕССИЯ ===== */
+const PARTS=[
+ {k:"engine",n:"Stage ECU",d:"Перепрошивка блока управления",max:5,base:9000,step:1.12,desc:"+8% к мощности за уровень"},
+ {k:"turbo",n:"Турбокит",d:"Наддув и интеркулер",max:3,base:26000,step:1.3,desc:"+15% к наградам за заезд за уровень"},
+ {k:"suspension",n:"Спортивная подвеска",d:"Стабильность и контроль",max:3,base:18000,step:1.25,desc:"Больше шанс на идеальную настройку"},
+ {k:"nitro",n:"NOS / закись азота",d:"Кратковременный буст",max:3,base:22000,step:1.35,desc:"+12% к наградам за заезд за уровень"}
+];
+const PAINTS=[["Заводской цвет",""],["Неоновый лайм","#b7ff35"],["Electric Blue","#168cff"],["Candy Red","#ff304f"],["Violet Storm","#9b5cff"],["Pearl White","#f0f2f5"],["Gold Rush","#f5c46b"],["Stealth Black","#252a33"]];
+function drawTune(){
+ const sel=$("#selTune"),panel=$("#tunePanel");if(!sel||!panel)return;
+ const o=state.owned.find(x=>x.uid===+sel.value)||state.owned[0],c=byId(o.id);o.tune=o.tune||{engine:0,turbo:0,suspension:0,nitro:0,paint:""};
+ const hp=Math.round(c.hp*(1+o.tune.engine*.08+o.tune.turbo*.15));
+ panel.innerHTML=`<div class="tune-preview"><div class="stage" style="--rc:${o.tune.paint||c.col}">${art(c,o)}</div><div class="tune-meta"><span>${o.tune.paint?"CUSTOM PAINT":"FACTORY PAINT"}</span><b>${o.tune.engine+o.tune.turbo+o.tune.suspension+o.tune.nitro?"STAGE "+(o.tune.engine+o.tune.turbo+o.tune.suspension+o.tune.nitro)+" BUILD":"STOCK BUILD"}</b></div></div><div class="stats"><div class="stat"><b>${hp}</b><span>Л.С. СЕЙЧАС</span></div><div class="stat"><b>+${o.tune.turbo*15+o.tune.nitro*12}%</b><span>БОНУС ЗАЕЗДА</span></div><div class="stat"><b>${o.tune.engine+o.tune.turbo+o.tune.suspension+o.tune.nitro}/14</b><span>УРОВЕНЬ СБОРКИ</span></div></div>
+ ${PARTS.map(p=>{let lv=o.tune[p.k]||0,cost=Math.round(p.base*Math.pow(p.step,lv));return `<div class="part-card"><div class="tune-part-head"><div class="part-icon">${({engine:"⚡",turbo:"◉",suspension:"↕",nitro:"✦"})[p.k]}</div><div style="flex:1;min-width:0"><div class="row"><b>${p.n}</b><span class="tag">STAGE ${lv}/${p.max}</span></div><small>${p.d}</small></div></div><p class="mu">${p.desc}</p><div class="bar"><i style="width:${lv/p.max*100}%;background:var(--cy)"></i></div><button class="btn" ${lv>=p.max?"disabled":""} onclick="upgradePart(${o.uid},'${p.k}')">${lv>=p.max?"МАКСИМУМ":"УЛУЧШИТЬ · "+fmt(cost)}</button></div>`}).join("")}
+ <div class="card"><h2>🧩 ВНЕШНОСТЬ ПРОЕКТА</h2><p class="mu">ECU добавляет аккуратную гоночную графику, турбо — воздухозаборник и спойлер, подвеска — боковые юбки и низкую посадку, NOS — световой след. Все детали ограничены силуэтом кузова и видны в гараже, досье и мини-играх. Эффекты появляются по мере установки деталей.</p></div><div class="card"><h2>🎨 КУЗОВ И ВИНИЛЫ</h2><p class="mu">Покраска проекта · 4 000 ₽ за смену цвета</p><div class="grid" style="grid-template-columns:repeat(2,1fr)">${PAINTS.map(([n,col])=>`<button class="btn s" onclick="paintCar(${o.uid},'${col}')"><span style="display:inline-block;width:12px;height:12px;border-radius:50%;background:${col||c.col};border:1px solid #fff8;vertical-align:middle"></span> ${n}${(o.tune.paint||"")===col?" ✓":""}</button>`).join("")}</div></div>`;
+}
+function upgradePart(uid,key){
+ const o=state.owned.find(x=>x.uid===uid),p=PARTS.find(x=>x.k===key);if(!o||!p)return;
+ o.tune=o.tune||{engine:0,turbo:0,suspension:0,nitro:0,paint:""};
+ const lv=o.tune[key]||0,cost=Math.round(p.base*Math.pow(p.step,lv));if(lv>=p.max)return toast("Улучшение максимальное");if(state.money<cost)return toast("Не хватает средств");
+ state.money-=cost;o.tune[key]=lv+1;state.xp+=20;toast(p.n+" улучшен до Stage "+(lv+1));sfx("upgrade");burst(key==="nitro"?"#5ee6ff":"#f5c46b",16);save(false);drawTune();head();
+}
+function paintCar(uid,col){
+ const o=state.owned.find(x=>x.uid===uid);if(!o)return;if((o.tune?.paint||"")===col)return toast("Этот цвет уже установлен");
+ if(state.money<4000)return toast("Нужно 4 000 ₽");state.money-=4000;o.tune=o.tune||{};o.tune.paint=col;save(false);drawTune();head();sfx("paint");burst(col||byId(o.id).col,14);toast("Новый цвет нанесён");
+}
+/* Промокоды — локальная однопользовательская игра; коды не являются серверной авторизацией. */
+const PROMO_CODES={
+  "AVANTGARDE-ADMIN-100M":{kind:"money",amount:100000000,message:"Админский бонус: +100 000 000 ₽",unlimited:true},
+  "AVANTGARDE-ADMIN-100K":{kind:"setMoney",amount:100000,message:"Баланс установлен на 100 000 ₽",unlimited:true},
+  "AVANTGARDE-500K-1":{kind:"money",amount:500000,message:"Промокод: +500 000 ₽",unlimited:true},
+  "AVANTGARDE-500K-2":{kind:"money",amount:500000,message:"Промокод: +500 000 ₽",unlimited:true}
+};
+function redeemPromo(){
+ const input=$("#promoInput");if(!input)return;
+ const code=input.value.trim().toUpperCase().replace(/\s+/g,"");if(!code)return toast("Введи промокод");
+ state.redeemedPromo=Array.isArray(state.redeemedPromo)?state.redeemedPromo:[];
+ const promo=PROMO_CODES[code];if(!promo){sfx("fail");return toast("Промокод не найден");}
+ if(!promo.unlimited&&state.redeemedPromo.includes(code))return toast("Этот промокод уже использован");
+ if(promo.kind==="money"){state.money+=promo.amount;state.profit+=promo.amount;}
+ else if(promo.kind==="setMoney"){state.money=promo.amount;}
+ if(!promo.unlimited)state.redeemedPromo.push(code);state.xp+=promo.kind==="money"?500:0;save(false);sfx("win");burst(promo.kind==="money"?"#f5c46b":"#5ee6ff",30);toast(promo.message);render();
+}
+/* ===== Действия ===== */
+function buy(i){
+  const o=state.market.list[i];if(!o)return;
+  if(state.owned.length>=MAX)return toast("Гараж заполнен");
+  if(state.money<o.price)return toast("Недостаточно средств");
+  state.money-=o.price;state.owned.push({uid:uid(),id:o.id,cost:o.price,cond:o.cond,broken:false,tune:{engine:0,turbo:0,suspension:0,nitro:0,paint:""}});state.market.list.splice(i,1);
+  state.xp+=60;state.deals++;state.last=Date.now();toast("Куплено: "+byId(o.id).n);save();
+}
+function sell(u){
+  const o=state.owned.find(x=>x.uid===u);if(!o)return;const v=sellP(o);
+  state.money+=v;state.profit+=v-o.cost;state.owned=state.owned.filter(x=>x.uid!==u);state.xp+=80;state.deals++;
+  toast((v>=o.cost?"Прибыль ":"Убыток ")+fmt(Math.abs(v-o.cost)));if(v>o.cost)burst("#4be39a",22);save();
+}
+function collect(){
+  const g=ready();if(g<=0)return toast("Доход ещё не накопился");
+  state.money+=g;state.profit+=g;state.xp+=20;state.last=Date.now();let br=0;
+  state.owned.forEach(o=>{if(o.broken)return;o.cond=Math.max(5,o.cond-RI(1,4));if(o.cond<=15||(o.cond<60&&Math.random()<.25)){o.broken=true;br++}});
+  toast("Собрано "+fmt(g));burst();if(br)setTimeout(()=>toast("⚠ Сломалось машин: "+br),700);save();
+}
+function fix(u){
+  const o=state.owned.find(x=>x.uid===u);if(!o||!o.broken)return;const c=Math.round(byId(o.id).price*.03);
+  if(state.money<c)return toast("Недостаточно средств");
+  state.money-=c;o.broken=false;o.cond=Math.max(o.cond,25);state.repairs++;state.xp+=25;toast("Машина снова на ходу");save();
+}
+function service(u){
+  const o=state.owned.find(x=>x.uid===u);if(!o||o.broken)return;const pts=Math.min(15,100-o.cond),c=Math.round(byId(o.id).price*.006*pts);
+  if(pts<=0)return;if(state.money<c)return toast("Недостаточно средств");
+  state.money-=c;o.cond+=pts;state.repairs++;state.xp+=25;save();
+}
+function daily(){const t=new Date().toLocaleDateString("sv-SE");if(state.daily===t)return;state.money+=20000;state.profit+=20000;state.xp+=30;state.daily=t;toast("+20 000 ₽");burst();save()}
+function openCase(id){
+  if(busy)return;const b=CASES.find(x=>x.id===id);if(!b)return;
+  if(state.money<b.price)return toast("Недостаточно средств");
+  if(state.owned.length>=MAX)return toast("Гараж заполнен");
+  busy=true;sfx('spin');const car=pickCase(b),pool=b.ids.map(byId),cond=Math.max(30,Math.min(99,car.cond+RI(-10,8))),W=130,WIN=40;
+  state.money-=b.price;const o={uid:uid(),id:car.id,cost:b.price,cond,broken:false};const saleValue=sellP(o),netResult=saleValue-b.price;const resultLabel=netResult>=0?"ОКУП ПРИ ПРОДАЖЕ":"СЛИВ ПРИ ПРОДАЖЕ";state.owned.push(o);state.opened++;state.deals++;state.xp+=100;state.last=Date.now();save(false);
+  const seq=Array.from({length:46},(_,i)=>i===WIN?car:pool[RI(0,pool.length-1)]);
+  const m=document.createElement("div");m.className="modal";
+  m.innerHTML=`<div class="mp"><div class="brand">${b.n} · ${fmt(b.price)}</div><div class="win"><div class="reel" id="reel">${seq.map(c=>`<div class="ri" style="--rc:${rar(c).color}">${svg(c,{cond:100})}<b>${c.n}</b></div>`).join("")}</div></div><div id="res"><p class="mu">Крутим барабан…</p></div><button class="btn" id="cls" disabled>…</button></div>`;
+  document.body.appendChild(m);
+  const reel=m.querySelector("#reel"),off=m.querySelector(".win").clientWidth/2-62;
+  reel.style.transform=`translateX(${off}px)`;
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{reel.style.transition="transform 4.6s cubic-bezier(.1,.7,.1,1)";reel.style.transform=`translateX(${off-WIN*W}px)`}));
+  setTimeout(()=>{
+    const k=rar(car);sfx('win');m.querySelector(".win").hidden=true;
+    m.querySelector("#res").innerHTML=`<div class="stage" style="margin:0;border:0;background:none;height:190px">${svg(car,o)}</div><div style="color:${k.color};font-weight:800;letter-spacing:.14em">${k.name}</div><h2 style="font-size:24px;margin:6px 0">${car.n}</h2><p class="mu">${car.hp} л.с. · состояние ${cond}% · оценка ${fmt(sellP(o))}</p><div style="padding:12px;border:1px solid var(--ln);border-radius:12px"><b style="color:${netResult>=0?"var(--gr)":"var(--rd)"}">${resultLabel}</b><div style="font-size:22px;font-weight:900;margin-top:4px;color:${netResult>=0?"var(--gr)":"var(--rd)"}">${netResult>=0?"+":"−"}${fmt(Math.abs(netResult))}</div><div class="row" style="margin-top:10px"><small>Цена кейса</small><b>${fmt(b.price)}</b></div><div class="row"><small>Реальная цена продажи машины</small><b>${fmt(saleValue)}</b></div><small>Расчёт: цена продажи − цена кейса. Это потенциальный результат, если продать машину сейчас; деньги за продажу ещё не начислены.</small></div>`;
+    burst(k.color,20+k.i*14);const c=m.querySelector("#cls");c.disabled=false;c.textContent="ЗАБРАТЬ В ГАРАЖ";c.onclick=()=>{m.remove();busy=false;tab="garage";render()};
+  },4800);
+}
+/* ===== Мини-игры ===== */
+const dr={st:0,t:0,go:0};let tn=null;
+function pick(id){const o=state.owned.find(x=>x.uid===+$(id).value);if(!o||o.broken){toast("Выбери исправную машину");return null}return o}
+function drag(){
+  const L=[...document.querySelectorAll("#lights i")],btn=$("#dgBtn");
+  if(dr.st===0){
+    const o=pick("#selD");if(!o)return;if(cdLeft("drag")>0)return toast("Двигатель остывает: "+cdLeft("drag")+" с");
+    $("#trk .c").innerHTML=svg(byId(o.id),o).replace(/<svg /,'<svg style="width:90px" ');dr.st=1;L.forEach(l=>l.className="");btn.textContent="ЖДИ ЗЕЛЁНЫЙ…";let k=0;
+    dr.t=setInterval(()=>{if(k<3){L[k++].className="r"}else{clearInterval(dr.t);dr.t=setTimeout(()=>{L.forEach(l=>l.className="g");dr.go=performance.now();dr.st=2;btn.textContent="ГАЗ!!!"},R(500,1800))}},600);
+  }else if(dr.st===1){
+    clearInterval(dr.t);clearTimeout(dr.t);const o=pick("#selD");dr.st=3;state.cd.drag=Date.now()+30000;
+    if(o)o.cond=Math.max(5,o.cond-3);toast("Фальстарт! Машина получила повреждения");save(false);setTimeout(render,800);
+  }else if(dr.st===2){
+    const rawMs=performance.now()-dr.go,o=state.owned.find(x=>x.uid===+$("#selD").value);dr.st=3;if(!o)return;const t=o.tune||{},ms=rawMs/(1+(t.nitro||0)*.045);
+    const mult=ms<220?2:ms<320?1.5:ms<480?1:ms<800?.6:.3,hp=byId(o.id).hp*(1+(t.engine||0)*.08+(t.turbo||0)*.15),gain=Math.round((2000+hp*10)*mult*(.5+o.cond/200)*(1+(t.turbo||0)*.15+(t.nitro||0)*.12));
+    $("#trk").classList.add("go");state.money+=gain;state.profit+=gain;state.xp+=40;state.cd.drag=Date.now()+30000;
+    o.cond=Math.max(5,o.cond-RI(1,3));let msg=`Реакция ${Math.round(ms)} мс · +${fmt(gain)}`;
+    if(o.cond<50&&Math.random()<.2){o.broken=true;msg+=" · ДВИГАТЕЛЬ ВЗОРВАЛСЯ!"}
+    toast(msg);sfx(mult>=1.5?"win":"engine");if((t.nitro||0)>0){const f=document.createElement("div");f.className="nitro-flash";document.body.appendChild(f);setTimeout(()=>f.remove(),650)}if(mult>=1.5)burst("#4be39a",26);save(false);setTimeout(render,1900);
+  }
+}
+function setZone(){const z=$("#zone");z.style.left=tn.z*100+"%";z.style.width=tn.w*100+"%"}
+function tune(){
+  if(!tn){
+    const o=pick("#selT");if(!o)return;if(cdLeft("tune")>0)return toast("Подожди "+cdLeft("tune")+" с");
+    tn={o,r:0,hit:0,z:R(.15,.7),w:.14+((o.tune?.suspension||0)*.012),t0:performance.now(),sp:2.3,p:0};$("#tnBtn").textContent="ФИКСИРОВАТЬ";setZone();
+    const loop=()=>{const n=$("#needle");if(!tn||!n)return;tn.p=(Math.sin((performance.now()-tn.t0)/1000*tn.sp*3)+1)/2;n.style.left=tn.p*100+"%";requestAnimationFrame(loop)};loop();return;
+  }
+  const ok=tn.p>=tn.z&&tn.p<=tn.z+tn.w;if(ok)tn.hit++;toast(ok?"✔ Точно!":"✘ Мимо");sfx(ok?"win":"fail");tn.r++;
+  if(tn.r>=3){
+    const o=tn.o,gain=Math.round(tn.hit*(450+byId(o.id).price*.00035));
+    state.money+=gain;state.profit+=gain;state.xp+=30+tn.hit*10;state.cd.tune=Date.now()+45000;
+    toast(`Результат ${tn.hit}/3 · +${fmt(gain)}`);if(tn.hit===3)burst("#5ee6ff",30);tn=null;save(false);setTimeout(render,900);
+  }else{tn.z=R(.1,.7);tn.w-=.04;tn.sp+=.5;tn.t0=performance.now();setZone();$("#tnInfo").textContent=`Раунд ${tn.r+1}/3`}
+}
+/* Дополнительные мини-игры */
+let park=null,gear=null,slalom=null;
+function parkingGame(){if(!park&&cdLeft("park")>0)return toast("Парковка на перезарядке: "+cdLeft("park")+" с");const btn=$('#parkBtn'),n=$('#parkNeedle'),target=$('#parkTarget'),info=$('#parkInfo');if(!btn||!n)return;const o=pick('#selPark');if(!o)return;if(!park){park={o,start:performance.now(),p:0,dir:1};const susp=o.tune?.suspension||0;const width=12+susp*2;const left=RI(22,72);target.style.left=left+'%';target.style.width=width+'%';btn.textContent='ТОРМОЗ!';info.textContent='НАЖМИ, ЧТОБЫ ОСТАНОВИТЬСЯ';const loop=()=>{if(!park||!n.isConnected)return;const t=(performance.now()-park.start)/1000;park.p=(Math.sin(t*(1.8+(o.tune?.engine||0)*.04))+1)/2*100;n.style.left=park.p+'%';park.raf=requestAnimationFrame(loop)};loop();return}const pos=park.p,lo=parseFloat(target.style.left),hi=lo+parseFloat(target.style.width),center=(lo+hi)/2,dist=Math.abs(pos-center),ok=pos>=lo&&pos<=hi;cancelAnimationFrame(park.raf);const gain=Math.round((ok?520:90)+Math.max(0,100-dist*1.7)*4+(o.tune?.suspension||0)*45);state.money+=gain;state.profit+=gain;state.xp+=ok?35:10;info.textContent=(ok?'ИДЕАЛЬНО! ':'МАНЁВР НЕУДАЧНЫЙ · ')+Math.round(dist)+'% от центра';btn.textContent='КД · 30 с';park=null;state.cd.park=Date.now()+30000;sfx(ok?'win':'fail');if(ok)burst('#4be39a',20);save(false);toast((ok?'Идеальная парковка · ':'Парковка · ')+`+${fmt(gain)}`)}
+function gearGame(){if(!gear&&cdLeft("gear")>0)return toast("Коробка остывает: "+cdLeft("gear")+" с");const btn=$('#gearBtn'),n=$('#gearNeedle'),target=$('#gearTarget'),info=$('#gearInfo');if(!btn||!n)return;const o=pick('#selGear');if(!o)return;if(!gear){gear={o,r:0,score:0,start:performance.now(),p:0};btn.textContent='ПЕРЕКЛЮЧИТЬ!';info.textContent='1 / 4 · ПОЙМАЙ ЗЕЛЁНУЮ ЗОНУ';target.style.left='58%';target.style.width=Math.max(9,18-(o.tune?.turbo||0))+'%';const loop=()=>{if(!gear||!n.isConnected)return;gear.p=(Math.sin((performance.now()-gear.start)/1000*(2.2+gear.r*.8))+1)/2*100;n.style.left=gear.p+'%';gear.raf=requestAnimationFrame(loop)};loop();return}const lo=parseFloat(target.style.left),hi=lo+parseFloat(target.style.width),ok=gear.p>=lo&&gear.p<=hi;if(ok)gear.score++;gear.r++;sfx(ok?'shift':'fail');if(gear.r>=4){cancelAnimationFrame(gear.raf);const gain=Math.round(gear.score*(180+byId(o.id).hp*.22)+(o.tune?.engine||0)*35);state.cd.gear=Date.now()+45000;state.money+=gain;state.profit+=gain;state.xp+=20+gear.score*8;info.textContent=`ФИНИШ · ${gear.score}/4 ИДЕАЛЬНО · +${fmt(gain)}`;btn.textContent='НОВЫЙ ЗАЕЗД';gear=null;if(gear===null){}if(ok)burst('#f5c46b',14);save(false);toast('Переключение передач: +'+fmt(gain));setTimeout(render,1600);return}gear.start=performance.now();target.style.left=RI(35,72)+'%';target.style.width=Math.max(8,17-gear.r*2)+'%';info.textContent=`${gear.r+1} / 4 · ${ok?'ЧЁТКО!':'ПРОМАХ'}`;btn.textContent='ПЕРЕКЛЮЧИТЬ!'}
+function slalomGame(){if(!slalom&&cdLeft("slalom")>0)return toast("Слалом на перезарядке: "+cdLeft("slalom")+" с");const btn=$('#slalomBtn'),prompt=$('#slalomPrompt'),arrow=$('#slalomArrow'),info=$('#slalomInfo');if(!btn)return;const o=pick('#selSlalom');if(!o)return;if(!slalom){slalom={o,round:0,score:0,need:'left'};btn.textContent='ПРОЙТИ СЛЕДУЮЩИЕ ВОРОТА';}if(slalom.round>=5){const gain=Math.round(slalom.score*(130+(o.tune?.suspension||0)*25)+(o.tune?.turbo||0)*35);state.cd.slalom=Date.now()+60000;state.money+=gain;state.profit+=gain;state.xp+=15+slalom.score*9;info.textContent=`ФИНИШ · ${slalom.score}/5 · +${fmt(gain)}`;btn.textContent='НОВЫЙ ЗАЕЗД';slalom=null;sfx('win');if(gain>7000)burst('#5ee6ff',20);save(false);toast('Слалом завершён: +'+fmt(gain));setTimeout(render,1600);return}slalom.need=Math.random()>.5?'left':'right';prompt.textContent=slalom.need==='left'?'ПОВЕРНИ ВЛЕВО':'ПОВЕРНИ ВПРАВО';arrow.textContent=slalom.need==='left'?'⬅️':'➡️';info.textContent=`ВОРОТА ${slalom.round+1}/5 · УСПЕХ ${slalom.score}`;btn.textContent='ГОТОВ К ВОРОТАМ';}
+function slalomMove(dir){if(!slalom)return toast('Сначала начни слалом');const o=slalom.o,ok=dir===slalom.need;if(ok)slalom.score++;slalom.round++;sfx(ok?'shift':'fail');$('#slalomInfo').textContent=ok?'ЧИСТЫЙ ПРОХОД!':'СТОЛКНОВЕНИЕ!';if(!ok)o.cond=Math.max(5,o.cond-1);if(slalom.round>=5){slalomGame();return}setTimeout(()=>{if(slalom)slalomGame()},500)}
+  /* New skill games with persisted cooldowns and modest rewards */
+let lightRun=null,memoryRun=null;
+function lightGame(){
+ const btn=$('#lightBtn'),info=$('#lightInfo'),lamps=[...document.querySelectorAll('#lightGameLamps i')];if(!btn||!info)return;
+ if(!lightRun){if(cdLeft('light')>0)return toast('Светофор на перезарядке: '+cdLeft('light')+' с');const o=pick('#selLight');if(!o)return;lightRun={o,stage:'wait',start:performance.now(),score:0,round:0,timer:null};lamps.forEach(x=>x.className='');info.textContent='ЖДИ ЗЕЛЁНЫЙ… НЕ ФАЛЬСТАРТУЙ';btn.textContent='ЖДУ СИГНАЛА…';btn.style.filter='brightness(.8)';lightRun.timer=setTimeout(()=>{if(!lightRun)return;lightRun.stage='green';lightRun.start=performance.now();lamps.forEach(x=>x.className='');lamps[2].className='g';info.textContent='ЗЕЛЁНЫЙ! ЖМИ!';btn.textContent='ГАЗ!';btn.style.filter='';sfx('shift')},RI(1600,4200));return;}
+ if(lightRun.stage==='wait'){clearTimeout(lightRun.timer);const o=lightRun.o;o.cond=Math.max(5,o.cond-2);state.cd.light=Date.now()+45000;info.textContent='ФАЛЬСТАРТ · -2% СОСТОЯНИЯ';lightRun=null;state.xp=Math.max(0,state.xp-5);sfx('fail');save(false);setTimeout(render,1100);return;}
+ const ms=performance.now()-lightRun.start,score=ms<240?3:ms<340?2:ms<500?1:0;lightRun.score+=score;lightRun.round++;sfx(score?'win':'fail');if(lightRun.round<3){lightRun.stage='wait';lamps.forEach(x=>x.className='');info.textContent=`${Math.round(ms)} мс · ПОПЫТКА ${lightRun.round}/3`;btn.textContent='ЖДИ СИГНАЛА…';lightRun.timer=setTimeout(()=>{if(!lightRun)return;lightRun.stage='green';lightRun.start=performance.now();lamps[2].className='g';info.textContent='ЗЕЛЁНЫЙ! ЖМИ!';btn.textContent='ГАЗ!'},RI(1400,3600));return;}
+ const o=lightRun.o,gain=Math.max(0,Math.round(lightRun.score*(85+byId(o.id).hp*.07)));state.money+=gain;state.profit+=gain;state.xp+=5+lightRun.score*2;state.cd.light=Date.now()+45000;info.textContent=`ФИНИШ · ${lightRun.score}/9 · +${fmt(gain)}`;btn.textContent='КД · 45 с';lightRun=null;save(false);toast('Реакция завершена: +'+fmt(gain));setTimeout(render,1200);
+}
+function memoryGame(){const btn=$('#memoryBtn'),info=$('#memoryInfo');if(!btn||!info)return;if(!memoryRun){if(cdLeft('memory')>0)return toast('Тренировка на перезарядке: '+cdLeft('memory')+' с');const o=pick('#selMemory');if(!o)return;memoryRun={o,seq:[],input:0,round:0,showing:false};memoryNext();return;}if(memoryRun.showing)return toast('Запомни последовательность!');}
+function memoryNext(){if(!memoryRun)return;const m=memoryRun;m.seq.push(Math.random()<.5?'left':'right');m.input=0;m.showing=true;const info=$('#memoryInfo'),btn=$('#memoryBtn');info.textContent=`РАУНД ${m.round+1}/5 · ЗАПОМИНАЙ`;btn.textContent='СМОТРИ НА СИГНАЛЫ';let i=0;const tick=()=>{if(!memoryRun)return;if(i>=m.seq.length){m.showing=false;info.textContent=`ПОВТОРИ ${m.seq.length} НАПРАВЛЕНИЙ`;btn.textContent='ВВОДИ ПОСЛЕДОВАТЕЛЬНОСТЬ';return;}info.textContent=m.seq.slice(0,i).map(x=>x==='left'?'⬅':'➡').join(' ')+'  '+(m.seq[i]==='left'?'⬅':'➡');sfx('leaf');i++;setTimeout(tick,Math.max(260,650-m.round*65));};tick();}
+function memoryInput(dir){if(!memoryRun||memoryRun.showing)return toast('Сначала начни тренировку и запомни сигналы');const m=memoryRun;if(m.seq[m.input]!==dir){const info=$('#memoryInfo');info.textContent='ОШИБКА · КОМБО СБРОШЕНО';state.cd.memory=Date.now()+60000;state.xp+=Math.max(0,m.round*2);memoryRun=null;sfx('fail');save(false);toast('Последовательность нарушена');setTimeout(render,1000);return;}m.input++;sfx('shift');if(m.input>=m.seq.length){m.round++;if(m.round>=5){const gain=Math.round((m.seq.length*34)+(m.o.tune?.engine||0)*12);state.money+=gain;state.profit+=gain;state.xp+=12;state.cd.memory=Date.now()+60000;$('#memoryInfo').textContent=`ПИЛОТСКАЯ ПАМЯТЬ · +${fmt(gain)}`;$('#memoryBtn').textContent='КД · 60 с';memoryRun=null;burst('#5ee6ff',10);save(false);toast('Тренировка пройдена: +'+fmt(gain));setTimeout(render,1300);return;}setTimeout(memoryNext,450);}else $('#memoryInfo').textContent=`ВЕРНО ${m.input}/${m.seq.length} · ПРОДОЛЖАЙ`;}
+function updateCooldownButtons(){const pairs=[['dgBtn','drag','СТАРТ'],['tnBtn','tune','НАЧАТЬ'],['parkBtn','park','НАЧАТЬ ПАРКОВКУ'],['gearBtn','gear','ЗАПУСТИТЬ ДВИГАТЕЛЬ'],['slalomBtn','slalom','СТАРТ СЛАЛОМА'],['lightBtn','light','НАЧАТЬ ЗАЕЗД'],['memoryBtn','memory','НАЧАТЬ ТРЕНИРОВКУ']];for(const [id,k,label] of pairs){const b=$('#'+id);if(!b)continue;if(cdLeft(k)>0&&!(k==='drag'&&dr.st>0)&&!(k==='tune'&&tn)&&!(k==='park'&&park)&&!(k==='gear'&&gear)&&!(k==='slalom'&&slalom)&&!(k==='light'&&lightRun)&&!(k==='memory'&&memoryRun)){b.disabled=true;b.textContent='КД · '+cdLeft(k)+' с';}else if(cdLeft(k)===0&&!dr.st&&!tn&&!park&&!gear&&!slalom&&!lightRun&&!memoryRun){b.disabled=false;if(b.textContent.startsWith('КД'))b.textContent=label;}}}
+document.querySelectorAll("#nav button").forEach(b=>b.addEventListener("click",()=>{if(busy)return;sfx('click');tab=b.dataset.t;render()}));
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(b&&b.id!=='soundToggle'&&!b.closest('#nav')&&!b.disabled){if(!b.getAttribute('onclick')?.includes('upgradePart')&&!b.getAttribute('onclick')?.includes('paintCar'))sfx('click')}},{passive:true});
+setInterval(()=>{const e=$("#inc");if(e)e.textContent=fmt(ready());updateCooldownButtons()},1000);setInterval(()=>{state.savedAt=Date.now();const raw=JSON.stringify(state);try{localStorage.setItem(SK,raw)}catch(e){try{sessionStorage.setItem(SK,raw)}catch(e2){}}if(cloudAvailable()&&cloudReady&&Date.now()-lastCloudPush>14000)cloudWrite(raw)},15000);
+async function bootGame(){try{if(TG){TG.ready?.();TG.expand?.();TG.setHeaderColor?.('#07080b');TG.setBackgroundColor?.('#07080b');}if(cloudAvailable()){const cloud=await cloudRead();if(cloud){try{localStorage.setItem(SK,cloud);state=load();state.cd=state.cd||{};state.owned.forEach(o=>{o.tune=o.tune||{engine:0,turbo:0,suspension:0,nitro:0,paint:''}})}catch(e){}}cloudReady=true;if(!cloud)cloudWrite(JSON.stringify(state));}}catch(e){cloudReady=false}addTelegramStatus();render();ambient();fallingLeaves();}
+bootGame();
+</script></body></html>
