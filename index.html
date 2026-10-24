@@ -1341,3 +1341,71 @@ window.openMotoCase=function(){
 })();
 </script>
 </body></html>
+
+<!-- FINAL MOTORCYCLE FIX: reliable Telegram tab, paid case, active garage bike and passive income -->
+<style>
+#scr .garage-active-moto{margin-top:14px}
+#scr .moto-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+@media(max-width:430px){#scr .moto-grid{grid-template-columns:repeat(2,minmax(0,1fr))!important}#scr .moto-card .moto-art{height:118px!important;min-height:118px!important}}
+</style>
+<script id="final-motorcycle-fix">
+(()=>{
+ const CASE_PRICE=349000;
+ if(!Array.isArray(state.motos))state.motos=[];
+ // Make the motorcycle section work regardless of which previous render wrapper is active.
+ const oldRender=render;
+ render=function(){
+   if(tab==='motorcycles'){
+     head();const h=document.querySelector('#hd');if(h)h.textContent='Мотоциклы';
+     const scr=document.querySelector('#scr');if(scr)scr.innerHTML=renderMotorcycles();
+     document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',b.dataset.t==='motorcycles'));
+     return;
+   }
+   oldRender();
+   if(tab==='garage'){
+     const scr=document.querySelector('#scr');
+     if(scr&&!scr.querySelector('.garage-active-moto')){
+       const m=MOTOS.find(x=>x.id===state.activeMotoId);
+       if(m&&state.motos.some(x=>x.id===m.id)){
+         const el=document.createElement('section');el.className='garage-active-moto';
+         el.innerHTML=`<div class="bike-art"><img src="${motoSprite(m)}" alt="${m.n}"></div><div><div class="brand">МОТОЦИКЛ В ГАРАЖЕ</div><h2>${m.n}</h2><div class="mu">${m.type} · ${m.hp} л.с.</div><div class="income-number">Пассивный доход: ${fmt(Math.round((m.price||0)*0.00002))} ¥/ч</div><button class="btn s" onclick="tab='motorcycles';render()">УПРАВЛЯТЬ МОТОЦИКЛАМИ</button></div>`;scr.appendChild(el);
+       }
+     }
+   }
+ };
+ // Replace every previous roulette implementation with one guarded transaction.
+ window.openMotoCase=function(){
+   if(busy)return;
+   state.motos=Array.isArray(state.motos)?state.motos:[];
+   if(!Number.isFinite(Number(state.money))||Number(state.money)<CASE_PRICE){toast('Не хватает средств: '+fmt(CASE_PRICE));return;}
+   const available=MOTOS.filter(m=>!state.motos.some(o=>o.id===m.id));
+   if(!available.length){toast('Все мотоциклы уже собраны!');return;}
+   const m=available[Math.floor(Math.random()*available.length)];
+   // Deduct exactly once before awarding the item; persist the transaction immediately.
+   busy=true;state.money=Number(state.money)-CASE_PRICE;
+   state.motos.push({id:m.id,ownedAt:Date.now(),tune:{}});
+   if(!state.activeMotoId)state.activeMotoId=m.id;
+   state.opened=(state.opened||0)+1;state.xp=(state.xp||0)+35;
+   save(false);head();
+   const overlay=document.createElement('div');overlay.className='moto-wheel-overlay';overlay.id='motoWheelOverlayFinal';
+   overlay.innerHTML=`<div class="moto-wheel-panel"><h2>МОТО-КЕЙС · 349 000 ¥</h2><div class="moto-wheel-result">ПОЛУЧЕНО: ${m.n}</div><div class="moto-wheel-item" style="width:100%;height:150px"><img src="${motoSprite(m)}" alt="${m.n}"><b>${m.n}</b></div><button class="btn" id="motoFinalClaim">В ГАРАЖ</button></div>`;
+   document.body.appendChild(overlay);
+   overlay.querySelector('#motoFinalClaim').onclick=()=>{busy=false;overlay.remove();tab='motorcycles';render();toast(m.n+' добавлен в гараж');try{sfx('win');burst('#39cfff',24)}catch(e){}};
+   try{sfx('spin')}catch(e){}
+ };
+ // Passive income for the selected bike. Timestamp prevents offline/reload double-payment.
+ if(!state.motoIncomeAt)state.motoIncomeAt=Date.now();
+ setInterval(()=>{
+   const now=Date.now(),elapsed=Math.min(Math.max(0,now-(state.motoIncomeAt||now)),60000);state.motoIncomeAt=now;
+   const m=MOTOS.find(x=>x.id===state.activeMotoId);
+   if(m&&state.motos.some(x=>x.id===m.id)&&elapsed>0){
+     const perHour=Math.max(1,Math.round((m.price||50000)*0.00002));
+     state.money=(Number(state.money)||0)+perHour*elapsed/3600000;
+     save(false);
+     if(tab==='motorcycles'||tab==='garage')head();
+   }
+ },1000);
+ // Bind nav via delegation so it survives redraws and Telegram's dynamic DOM.
+ const nav=document.querySelector('#nav');if(nav&&!nav.dataset.motoFinalBound){nav.dataset.motoFinalBound='1';nav.addEventListener('click',e=>{const b=e.target.closest('button[data-t="motorcycles"]');if(b){e.preventDefault();tab='motorcycles';render();}})}
+})();
+</script>
