@@ -758,6 +758,7 @@ function openCase(id){
   reel.style.transform=`translateX(${off}px)`;
   requestAnimationFrame(()=>requestAnimationFrame(()=>{reel.style.transition="transform 4.6s cubic-bezier(.1,.7,.1,1)";reel.style.transform=`translateX(${off-WIN*W}px)`}));
   setTimeout(()=>{
+    if(!m.isConnected)return;
     const k=rar(car);sfx('win');m.querySelector(".win").hidden=true;
     m.querySelector("#res").innerHTML=`<div class="stage" style="margin:0;border:0;background:none;height:190px">${carSprite(car,o)}</div><div style="color:${k.color};font-weight:800;letter-spacing:.14em">${k.name}</div><h2 style="font-size:24px;margin:6px 0">${car.n}</h2><p class="mu">${car.hp} л.с. · состояние ${cond}% · оценка ${fmt(sellP(o))}</p><div style="padding:12px;border:1px solid var(--ln);border-radius:12px"><b style="color:${netResult>=0?"var(--gr)":"var(--rd)"}">${resultLabel}</b><div style="font-size:22px;font-weight:900;margin-top:4px;color:${netResult>=0?"var(--gr)":"var(--rd)"}">${netResult>=0?"+":"−"}${fmt(Math.abs(netResult))}</div><div class="row" style="margin-top:10px"><small>Цена кейса</small><b>${fmt(b.price)}</b></div><div class="row"><small>Реальная цена продажи машины</small><b>${fmt(saleValue)}</b></div><small>Расчёт: цена продажи − цена кейса. Это потенциальный результат, если продать машину сейчас; деньги за продажу ещё не начислены.</small></div>`;
     burst(k.color,20+k.i*14);const c=m.querySelector("#cls");c.disabled=false;c.textContent="ЗАБРАТЬ В ГАРАЖ";c.onclick=()=>{m.remove();busy=false;tab="garage";render();requestAnimationFrame(()=>window.scrollTo({top:0,behavior:"smooth"}))};
@@ -1340,6 +1341,48 @@ window.openMotoCase=function(){
 };
 })();
 </script>
+
+<style id="telegram-webview-final-fix">
+/* Telegram Mini App: keep case dialogs above the in-app hotbar */
+.modal,#avm-moto-wheel,.moto-wheel-overlay{z-index:2147483000!important}
+.modal{padding-top:calc(12px + env(safe-area-inset-top,0px))!important;padding-bottom:calc(110px + env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;align-items:flex-start!important}
+.modal .mp{position:relative!important;margin:auto 0!important;max-height:calc(100dvh - 130px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;padding-top:54px!important}
+#avm-moto-wheel{padding:calc(12px + env(safe-area-inset-top,0px)) 10px calc(112px + env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;align-items:flex-start!important}
+#avm-moto-wheel .mw-panel{position:relative!important;margin:auto 0!important;max-height:calc(100dvh - 132px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;padding-top:54px!important}
+.moto-wheel-overlay{padding:calc(12px + env(safe-area-inset-top,0px)) 10px calc(112px + env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;align-items:flex-start!important}
+.moto-wheel-overlay .moto-wheel-panel{position:relative!important;margin:auto 0!important;max-height:calc(100dvh - 132px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;overflow-y:auto!important;padding-top:54px!important}
+.avm-case-close{position:absolute!important;right:8px!important;top:8px!important;z-index:2147483001!important;width:38px!important;height:38px!important;min-height:38px!important;padding:0!important;border:2px solid #ff6580!important;border-radius:7px!important;background:#35101d!important;color:#fff!important;font-size:27px!important;font-weight:900!important;line-height:1!important;display:grid!important;place-items:center!important;cursor:pointer!important;box-shadow:0 0 14px #ff386c55!important}
+</style>
+<script id="telegram-webview-final-fix-js">
+(()=>{
+ // Capture the tap before the original nav handlers (which can ignore taps while busy).
+ document.addEventListener('click',e=>{
+   const b=e.target.closest&&e.target.closest('#nav button[data-t="motorcycles"]');
+   if(!b)return;
+   e.preventDefault();e.stopPropagation();e.stopImmediatePropagation();
+   tab='motorcycles';
+   try{head();const h=document.getElementById('hd');if(h)h.textContent='Мотоциклы';const scr=document.getElementById('scr');if(scr)scr.innerHTML=renderMotorcycles();document.querySelectorAll('#nav button').forEach(x=>x.classList.toggle('on',x===b));window.scrollTo(0,0);}catch(err){console.error('Motorcycle tab render failed',err);}
+ },true);
+ const addClose=el=>{
+   if(!el||el.querySelector('.avm-case-close'))return;
+   const panel=el.matches('.modal')?el.querySelector('.mp'):el.matches('#avm-moto-wheel')?el.querySelector('.mw-panel'):el.querySelector('.moto-wheel-panel');
+   if(!panel)return;
+   const x=document.createElement('button');x.type='button';x.className='avm-case-close';x.textContent='×';x.setAttribute('aria-label','Закрыть кейс');x.title='Закрыть кейс';
+   x.addEventListener('click',ev=>{ev.preventDefault();ev.stopPropagation();el.remove();busy=false;});
+   panel.appendChild(x);
+ };
+ const scan=()=>{
+   document.querySelectorAll('.modal,#avm-moto-wheel,.moto-wheel-overlay').forEach(addClose);
+ };
+ // Observe newly created car and motorcycle case modals in the Telegram WebView.
+ const start=()=>{
+   scan();
+   if(document.body&&!window.__avmTelegramCaseObserver){window.__avmTelegramCaseObserver=new MutationObserver(scan);window.__avmTelegramCaseObserver.observe(document.body,{childList:true,subtree:true});}
+ };
+ if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',start,{once:true});else start();
+})();
+</script>
+
 </body></html>
 
 <!-- FINAL MOTORCYCLE FIX: reliable Telegram tab, paid case, active garage bike and passive income -->
@@ -1407,5 +1450,51 @@ window.openMotoCase=function(){
  },1000);
  // Bind nav via delegation so it survives redraws and Telegram's dynamic DOM.
  const nav=document.querySelector('#nav');if(nav&&!nav.dataset.motoFinalBound){nav.dataset.motoFinalBound='1';nav.addEventListener('click',e=>{const b=e.target.closest('button[data-t="motorcycles"]');if(b){e.preventDefault();tab='motorcycles';render();}})}
+})();
+</script>
+
+<!-- TELEGRAM MINI APP CASE MODAL FIX: keep reward controls above the bottom hotbar and add close button -->
+<style id="telegram-case-modal-fix">
+#motoWheelOverlayFinal.moto-wheel-overlay,#motoWheelOverlay.moto-wheel-overlay{
+  box-sizing:border-box!important;
+  padding:calc(12px + env(safe-area-inset-top,0px)) 10px calc(104px + env(safe-area-inset-bottom,0px))!important;
+  align-items:center!important;justify-content:center!important;overflow-y:auto!important;
+  overscroll-behavior:contain!important;-webkit-overflow-scrolling:touch!important
+}
+#motoWheelOverlayFinal .moto-wheel-panel,#motoWheelOverlay .moto-wheel-panel{
+  position:relative!important;box-sizing:border-box!important;width:min(720px,100%)!important;
+  max-height:calc(100dvh - 132px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;
+  overflow-y:auto!important;flex-shrink:0!important;padding:46px 14px 18px!important;
+  overscroll-behavior:contain!important
+}
+#motoWheelOverlayFinal .moto-case-close,#motoWheelOverlay .moto-case-close{
+  position:absolute!important;top:8px!important;right:8px!important;z-index:10!important;
+  width:38px!important;height:38px!important;display:grid!important;place-items:center!important;
+  border:2px solid #ff6580!important;border-radius:9px!important;background:#35101d!important;
+  color:#fff!important;font-size:25px!important;font-weight:900!important;line-height:1!important;
+  box-shadow:0 0 12px #ff386c44!important;cursor:pointer!important
+}
+#motoWheelOverlayFinal #motoFinalClaim,#motoWheelOverlay #motoWheelClaim{
+  position:sticky!important;bottom:0!important;z-index:5!important;width:100%!important;
+  min-height:48px!important;margin-top:14px!important;box-shadow:0 0 0 7px #061426!important
+}
+@media(max-width:520px){
+ #motoWheelOverlayFinal.moto-wheel-overlay,#motoWheelOverlay.moto-wheel-overlay{padding-left:8px!important;padding-right:8px!important;padding-bottom:calc(112px + env(safe-area-inset-bottom,0px))!important}
+ #motoWheelOverlayFinal .moto-wheel-panel,#motoWheelOverlay .moto-wheel-panel{max-height:calc(100dvh - 140px - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px))!important;padding:46px 10px 16px!important}
+}
+</style>
+<script id="telegram-case-close-button-fix">
+(()=>{
+ const installClose=()=>{
+  const overlay=document.getElementById('motoWheelOverlayFinal')||document.getElementById('motoWheelOverlay');
+  if(!overlay||overlay.querySelector('.moto-case-close'))return;
+  const panel=overlay.querySelector('.moto-wheel-panel');if(!panel)return;
+  const close=document.createElement('button');close.type='button';close.className='moto-case-close';close.setAttribute('aria-label','Закрыть кейс');close.title='Закрыть кейс';close.textContent='×';
+  close.addEventListener('click',()=>{overlay.remove();busy=false;});panel.appendChild(close);
+ };
+ const originalOpen=window.openMotoCase;
+ window.openMotoCase=function(){originalOpen.apply(this,arguments);installClose();};
+ // Also handle a result modal that was already opened by the original function.
+ installClose();
 })();
 </script>
